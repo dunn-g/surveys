@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title><?php echo $page_title; ?></title>
+      <!--<link rel="stylesheet" href="includes/style.css">-->
+
+         <!--<img style margin="0px" height="60px" align="right" src="stba_logo_rgb-sm.jpg" alt="STBA Logo" ></img>-->
+         <link rel="shortcut icon" type="image/x-icon" href="stba_logo_rgb-sm.jpg" />
+         <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css" />
+         <style>
+            body {
+               color: blue ;
+               height: 100%;
+            }
+
+            header {
+               margin-top: 0px;
+               margin-left: 200px;
+               display: block;
+            }
+
+            a {
+               background-color: white;
+            }
+            
+            table {
+               width: 50%;
+               border: 0px solid pink;
+            }
+
+            th, td{
+              
+               border: 0px solid pink;
+               margin:3px;
+            }
+            
+            h1, h2{
+               padding: 5px;
+               display:inline-block; 
+            }
+
+            div {
+               width: 1180px;
+               height: 740px;
+               display: block;
+               position: relative;
+            }
+
+            div::after {
+               content: "";
+               background: url("images/old-houses.jpg");
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover; 
+               opacity: 0.25;
+               top: 0;
+               left: 0;
+               bottom: 0;
+               right: 0;
+               position: absolute;
+               z-index: -1;   
+            }
+            
+            footer {
+               bottom: 0px;
+               height: 0px;
+            }
+         </style>
+         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+   </head>
+<body>
+<!--<header><h1>Page Header</h1></header>-->

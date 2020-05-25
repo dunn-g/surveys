@@ -1,0 +1,277 @@
+
+
+body {
+	font-size: 12pt;
+	font-family: Verdana, Geneva, Sans-Serif, Roboto Condensed;
+	font-style: normal;
+	font-weight: light;
+   background-color: #f2f4f4;
+	color: purple;
+	line-height: 16pt;
+	padding-left: 0px;
+	padding-right: 0px;
+}	
+
+h1, h2 {
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+header {
+	font-style: normal;
+   padding-top: 0px;
+   margin-top: 0px;
+   margin-left: 200px;
+   display: block;
+}
+
+p {
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+pre {
+	font-size: 12pt;
+   padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}	
+
+div {
+	font-style: normal;
+   padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+fieldset { 
+   border:0px solid white;
+   color: blue;
+   text-indent: 3%;
+}
+fieldset legend {
+   background: #f2f4f4;
+   font-size: 14pt
+}
+
+.getchoice, a, p {
+   color: blue;
+}
+
+.goodbye {
+   background-color: white;
+}
+
+aside {
+   color: purple;
+   display: block;
+   float: right;
+   width: 200px; 
+}
+
+footer {
+	font-size: 12pt;
+	font-style: italic;
+	line-height: 12pt;
+	text-align: center;
+	padding-top: 30pt;
+   position:absolute;
+   bottom: 5%;
+   width:100%;
+/*   height:60px;    Height of the footer */
+}
+
+img {
+   /*src:"stba_logo_rgb-sm.jpg";*/
+	padding: 3pt;
+	float: right;
+}
+
+a {
+   font-size: 12pt;
+	text-decoration: none;
+   /* color:lime; */
+}
+
+table {
+   width:100%;
+   text-align: left;
+   vertical-align:top;
+   table-layout:fixed;
+}
+
+th {
+   width:33%;
+   white-space:nowrap;
+   text-align: left;
+   vertical-align:top;
+}
+td {
+   text-align: left;
+
+   vertical-align:top;
+}
+
+input[type=submit] {
+   position:relative;
+   /*margin-top:50%;*/
+   width: 10em;  
+   height: 2em;
+   font-size: 14pt;
+}
+
+#footer { 
+   position: fixed; 
+   bottom: 0px; 
+	text-align: center;
+}
+
+.pagefooter{
+/*.always-at-bottom */
+    /*height:40px;*/
+   position: fixed;
+   left: 0;
+   bottom: 0%;
+   width: 100%;
+   text-align: center;
+    /*background-color: blue;*/
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the nav sidebar */
+  margin-right: 200px; /* Same as the width of the aside sidebar */
+  position: relative;
+  z-index: 2;
+  padding: 5px 10px;
+}
+
+/* The sidebar menu */
+.sidenav {
+  height: 97%; /* Full-height: remove this if you want "auto" height */
+  width: 180px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #ddf0e5; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #0000ff ;/*#d1f2eb ;*/
+  display: block;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #00ff00;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:active {
+   color: #810b1f;
+ }
+ 
+ a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
+a:hover, a:active {
+	color: #ff00d4; /* #ff9933;*/
+}
+
+.info1 {
+   width: 200px;
+   float: right;
+   display: block;
+   position: relative;
+   top:0;
+   /*height: 50%;*/
+}
+
+.info2 {
+   width: 200px;
+   float: right;
+   display: block;
+   position: relative;
+   /*height: 50%;*/
+   /*bottom: 5px;*/
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
+
+p.subheader{
+	font-weight: bold;
+	color: #593d87;
+}
+
+.previousf {
+   margin-left: 0px;
+}
+
+.nextf {
+   margin-right:0px;
+}
+
+.cpyrght{
+	text-align: center;   
+}
+/* tooltip stuff follows :-                 */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /*border: 0.5px dotted black;*/
+}
+.tooltiptext-inner {
+   white-space: pre-line;
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 12pt;
+  width: 250px; /*60%;*/
+  background-color: #ddf0e5;
+  color: #0000ff;
+  text-align: centre;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.tooltip .tooltiptext::after {
+   /* this is the tooltip pointer/arrow */
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #ddf0e5 transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
