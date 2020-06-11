@@ -111,7 +111,6 @@ function clean_input($data) {
          window.onload = function() {
            hideOccupierInfoNotes();
            showOccupierInfoNotes();
-
          }
          
          $(function(){
@@ -124,6 +123,7 @@ function clean_input($data) {
              obj2 = document.getElementById("occinfonotesHdr");
              obj1.style.display="none";
              obj2.style.display="none";
+             obj1.value = "";
          }
 
          function showOccupierInfoNotes() {
@@ -135,11 +135,9 @@ function clean_input($data) {
                 obj1.style.display="block";
                 obj2.style.display="block";
              } else {
-               occupierinfonotes.value = ''
                hideOccupierInfoNotes();
              }
          }         
-         
       </script>
 
    </head>
@@ -147,7 +145,7 @@ function clean_input($data) {
       <!--Navigation bar-->
       <div id="nav-placeholder">
 
-      </div>
+      </div> 
       <!--end of Navigation bar-->
 
       <div>
@@ -169,7 +167,7 @@ function clean_input($data) {
                   Streetscape
                </th>
                <td>
-                  <select id="significantStreet" name="significantStreet" size=1 style="width: 200px;">
+                  <select id="significantStreet" name="significantStreet" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Not Significant"            <?php echo $row['SignificanceStreetscape'] == "Not Significant" ? " selected" : ""; ?>              >Not Significant</option>
                      <option value="Part of streetscene"        <?php echo $row['SignificanceStreetscape'] == "Part of streetscene" ? " selected" : ""; ?>        >Part of streetscene</option>
@@ -191,7 +189,7 @@ function clean_input($data) {
                   Heritage Status
                </th>
                <td>
-                  <select id="heritagestatus" name="heritagestatus[]" multiple="multiple" size=4 style="width: 200px;">
+                  <select id="heritagestatus" name="heritagestatus[]" multiple="multiple" size=4 >
                      <option value="" disabled >Please choose...</option>
                      <option value="Unlisted"           <?php echo (isset($heritageAry) && in_array('Unlisted', $heritageAry))            ? " selected" : ""; ?>>Unlisted</option>
                      <option value="Locally Listed"     <?php echo (isset($heritageAry) && in_array('Locally Listed', $heritageAry))      ? " selected" : ""; ?>>Locally Listed</option>
@@ -207,7 +205,7 @@ function clean_input($data) {
                   Significance
                </th>
                <td>
-                  <select id="significance" name="significance[]" multiple="multiple" size=4 style="width: 200px;">
+                  <select id="significance" name="significance[]" multiple="multiple" size=4 >
                      <option value="" disabled >Please choose...</option>
                      <option value="N/A"       <?php echo (isset($significanceAry) && in_array('N/A', $significanceAry))        ? " selected" : ""; ?>>N/A</option>
                      <option value="Historic"  <?php echo (isset($significanceAry) && in_array('Historic', $significanceAry))   ? " selected" : ""; ?>>Historic</option>
@@ -253,7 +251,7 @@ function clean_input($data) {
             <tr>
                <th>Occupier info supplied</th>
                <td>
-                  <input type="checkbox" id="occupierinfoChk" name="occupierinfo" onchange="showOccupierInfoNotes()" value="<?php echo ($row['OccupierInfo']=='1' ? '1' : '0');?>" <?php echo ($row['OccupierInfo']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="occupierinfoChk" name="occupierinfo" onchange="showOccupierInfoNotes()" value="<?php echo ($row['OccupierInfo']=='1' ? '1' : '0');?>" <?php echo ($row['OccupierInfo']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="occupierinfo_tt"  >
@@ -267,12 +265,16 @@ function clean_input($data) {
                   <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
                </div>
                </td>
-               <th id="occinfonotesHdr" > &nbsp; &nbsp; Occupier Info Notes</th>
-               <td>
-                  <input type="text" id="occinfonotesSel" name="occupierinfonotes" value="<?php echo $row['OccupierInfoNotes']?>">
-               </td>
             </tr>
          </table>
+         <div class="query" id="occinfonotesDiv">
+            <label for="occinfonotesSel" id="occinfonotesHdr">Occupier Info Notes &nbsp;</label>
+            <span>
+<!--               <input type="text" id="occinfonotesSel" name="occupierinfonotes" value="<?php echo $row['OccupierInfoNotes']?>">-->
+               <textarea id="occinfonotesSel" name="occupierinfonotes" value="<?php echo $row['OccupierInfoNotes']?>"></textarea>
+            </span>
+         </div>
+  
 <!--
       <br>         
       <br>         

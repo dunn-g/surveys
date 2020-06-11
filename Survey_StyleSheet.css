@@ -26,8 +26,9 @@ header {
 }
 
 p {
-   margin-top: 0;
-   margin-bottom: 0;
+   /*border      : 1px solid pink;*/
+   margin      : 0px;
+   padding     : 0px;
 }
 
 pre {
@@ -44,6 +45,10 @@ div {
 	padding-bottom: 0px;
 }
 
+textarea {
+   width : 220px;
+}
+
 fieldset { 
    border:0px solid white;
    color: blue;
@@ -52,6 +57,41 @@ fieldset {
 fieldset legend {
    background: #f2f4f4;
    font-size: 14pt
+}
+
+input[type=text], [type=datetime]  {
+   border   : 1px solid pink; 
+   width    :220px;
+}
+
+select {
+   width    :220px;
+   /*border   :1px solid green;*/
+}
+
+.query label{
+   display     : inline-block;
+   /*border      : 1px solid pink;*/
+   font-weight : bold;
+   margin      : 0px;
+   float       : left;
+   width       : 40%;
+   text-align  : right;   
+   padding     : 0px;
+}
+.query  span {
+   display  : inline-block;
+   /*border   : 1px solid pink;*/
+   overflow : hidden;
+   margin   : 0px 0px 0px 3px;
+   padding  : 0px;
+}
+
+.chk {
+   width       : 15px;
+   margin      : 0px;
+   margin-right: 205px;
+   padding     : 0px;
 }
 
 .getchoice, a, p {
@@ -98,17 +138,17 @@ table {
    text-align: left;
    vertical-align:top;
    table-layout:fixed;
+
 }
 
 th {
-   width:33%;
+   width:40%;
    white-space:nowrap;
    text-align: left;
    vertical-align:top;
 }
 td {
    text-align: left;
-
    vertical-align:top;
 }
 
@@ -126,7 +166,7 @@ input[type=submit] {
 	text-align: center;
 }
 
-.pagefooter{
+.pagefooter {
 /*.always-at-bottom */
     /*height:40px;*/
    position: fixed;
@@ -138,8 +178,8 @@ input[type=submit] {
 }
 
 .main {
-  margin-left: 200px; /* Same as the width of the nav sidebar */
-  margin-right: 200px; /* Same as the width of the aside sidebar */
+  margin-left: 180px; /* Same as the width of the nav sidebar */
+  margin-right: 180px; /* Same as the width of the aside sidebar */
   position: relative;
   z-index: 2;
   padding: 5px 10px;

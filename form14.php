@@ -122,21 +122,19 @@ function alert($msg) {
             <tr>
                <th>Exposed Site</th>
                <td>
-                  <input type="checkbox" id="exposedsite" name="exposedsite" value="<?php echo ($row['ExposedSite']=='1' ? '1' : '0');?>" <?php echo ($row['ExposedSite']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="exposedsite"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                     A building might be more or less sheltered than indicated by the national guidance.
-                  </span>
-                  <p style="font-size : 12"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" id="exposedsite" name="exposedsite" value="<?php echo ($row['ExposedSite']=='1' ? '1' : '0');?>" <?php echo ($row['ExposedSite']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="exposedsite"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                        A building might be more or less sheltered than indicated by the national guidance.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Weather Conditions</th>
                <td>					
-                  <select id="weatherConditions" name="weatherConditions" size="1" style="width: 200px;">
+                  <select id="weatherConditions" name="weatherConditions" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Dry and Warm"<?php echo $row['WeatherConditions'] == "Dry and Warm" ? " selected" : ""; ?>>Dry and Warm</option>
                      <option value="Dry and Cool"<?php echo $row['WeatherConditions'] == "Dry and Cool" ? " selected" : ""; ?>>Dry and Cool</option>
@@ -145,33 +143,29 @@ function alert($msg) {
                      <option value="Wet and Cool"<?php echo $row['WeatherConditions'] == "Wet and Cool" ? " selected" : ""; ?>>Wet and Cool</option>
                      <option value="Wet and Cold"<?php echo $row['WeatherConditions'] == "Wet and Cold" ? " selected" : ""; ?>>Wet and Cold</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="weatherconditions_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                     To give an indication of potential issues identified later, eg. condensation.
-                  </span>
-                  <p style="font-size : 12"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="weatherconditions_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                        To give an indication of potential issues identified later, eg. condensation.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Weather Prior Conditions</th>
                <td>
-                  <select id="priorConditions" name="priorConditions" size="1" style="width: 200px;">
+                  <select id="priorConditions" name="priorConditions" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Normal"              <?php echo $row['WeatherPriorConditions'] == "Normal" ? " selected" : ""; ?>>Normal</option>
-                     <option value="Dry spell" <?php echo $row['WeatherPriorConditions'] == "Dry spell" ? " selected" : ""; ?>>Dry spell</option>
+                     <option value="Dry spell"<?php echo $row['WeatherPriorConditions'] == "Dry spell" ? " selected" : ""; ?>>Dry spell</option>
                      <option value="Wet spell"<?php echo $row['WeatherPriorConditions'] == "Wet spell" ? " selected" : ""; ?>>Wet spell</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="weatherpriorconditions_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                     To better help to assess risk factors in play on the day of inspection
-                  </span>
-                  <p style="font-size : 12"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="weatherpriorconditions_tt"  >
+                     <span class="tooltiptext" >
+                        To better help to assess risk factors in play on the day of inspection
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
          </table>

@@ -109,29 +109,25 @@ function clean_input($data) {
       </header>
 
       <style>
-            label {
-            font-weight: bold;
-            margin: 8px 5px 8px 5px;
-            float: left;
-            width: 235px;
-            text-align: right;   
-            }
-            span {
-            display: block;
-            overflow: hidden;
-            margin: 8px 5px 8px 5px;
-            padding: 0 4px 0 6px;
-            }
-            .ufvinput select {
-            width: 400px;
-            }
-            table {
+/*<!--      
+         table {
             width:100%;
-            }
-            th {
-            width:33%;
-            } 
-        </style>
+            border: 0px solid black;
+         }
+         th {
+            width:40%;
+            border: 0px solid black;
+         }
+         td {
+            width:60%;
+            border: 1px solid black;
+         }
+         .ufvinput {
+            margin:0px;
+            padding:0px;
+         }
+-->*/         
+      </style>
 
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       <script>
@@ -183,36 +179,32 @@ function clean_input($data) {
             <tr>
                <th>External Ground Level</th>
                <td>
-                  <select id="extGrndLvl" name="extGrndLvl" size="1" style="width: 200px;">
+                  <select id="extGrndLvl" name="extGrndLvl" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="150mm below DPC / Internal floor level"     <?php echo $row['ExternalGroundLevel'] == "150mm below DPC / Internal floor level" ? " selected" : ""; ?>>150mm below DPC / Internal floor level</option>
                      <option value="&lt;150mm below DPC / internal floor level" <?php echo $row['ExternalGroundLevel'] == "&lt;150mm below DPC / internal floor level" ? " selected" : ""; ?>>&lt;150mm below DPC / internal floor level</option>
                      <option value="At DPC level / Internal floor level"        <?php echo $row['ExternalGroundLevel'] == "At DPC level / Internal floor level" ? " selected" : ""; ?>>At DPC level / Internal floor level</option>
                      <option value="Above DPC / Internal floor level"           <?php echo $row['ExternalGroundLevel'] == "Above DPC / Internal floor level" ? " selected" : ""; ?>>Above DPC / Internal floor level</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extGrndLvl_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To indicate potential source of damp issues. Note that
-                  some areas might vary in height differential. Ensure to
-                  take notes and photographs to illustrate.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extGrndLvl_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To indicate potential source of damp issues. Note that
+                     some areas might vary in height differential. Ensure to
+                     take notes and photographs to illustrate.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             <tr>
                <th>DPC Bridged by Render</th>
                <td>
-                  <input type="checkbox"  name="dpcbridgedbyrender" value="<?php echo ($row['DPCBridgedByRender']=='1' ? '1' : '0');?>" <?php echo ($row['DPCBridgedByRender']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="extGrndLvl_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To indicate potential source of damp issues.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="dpcbridgedbyrender" value="<?php echo ($row['DPCBridgedByRender']=='1' ? '1' : '0');?>" <?php echo ($row['DPCBridgedByRender']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="extGrndLvl_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To indicate potential source of damp issues.
+                     </span>
+                     <p style="font-size : 14;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -224,43 +216,43 @@ function clean_input($data) {
             <tr>
                <th>Any Underfloor Vents?</th>
                <td>
-                  <input type="checkbox" id="anyundflrventsChk" name="anyundflrvents" onchange="showunderfloorvents()" value="<?php echo ($row['AnyUndflrVents']=='1' ? '1' : '0');?>" <?php echo ($row['AnyUndflrVents']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="underflrVents_tt" style="display: inline;" >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To indicate presence and effectiveness of underfloor ventilation if present.
-                  </span>
-                  <p style="font-size: 14; display: inline;"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" id="anyundflrventsChk" name="anyundflrvents" onchange="showunderfloorvents()" value="<?php echo ($row['AnyUndflrVents']=='1' ? '1' : '0');?>" <?php echo ($row['AnyUndflrVents']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="underflrVents_tt" " >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To indicate presence and effectiveness of underfloor ventilation if present.
+                     </span>
+                     <p style="text-align: right; font-size: 14;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             </table>
-               <label for="underfloorventsSel" id="underfloorventsHdr">Underfloor Vents</label>
-                <span><select class="ufvinput" id="underfloorventsSel" name="underfloorvents" size="1" style="width: 200px;">
-                     <option value="" disabled selected>Please choose...</option>
-                     <option value="Cross vented(front and back)"    <?php echo $row['UnderfloorVents'] == "Cross vented(front and back)" ? " selected" : ""; ?>>Cross vented(front and back)</option>
-                     <option value="Front vent only"                 <?php echo $row['UnderfloorVents'] == "Front vent only" ? " selected" : ""; ?>>Front vent only</option>
-                     <option value="Back vent only"                  <?php echo $row['UnderfloorVents'] == "Back vent only" ? " selected" : ""; ?>>Back vent only</option>
-                     <option value="Vents partially blocked/covered" <?php echo $row['UnderfloorVents'] == "Vents partially blocked/covered" ? " selected" : ""; ?>>Vents partially blocked/coveredVents partially blocked</option>
-                     <option value="Other"                           <?php echo $row['UnderfloorVents'] == "Other" ? " selected" : ""; ?>>Other</option>
-                  </select></span>
+               <div class="query">
+                  <label for="underfloorventsSel" id="underfloorventsHdr">Underfloor Vents &nbsp;</label>
+                  <span style="white-space: nowrap">
+                     <select class="ufvinput" id="underfloorventsSel" name="underfloorvents" size="1">
+                        <option value="" disabled selected>Please choose...</option>
+                        <option value="Cross vented(front and back)"    <?php echo $row['UnderfloorVents'] == "Cross vented(front and back)" ? " selected" : ""; ?>>Cross vented(front and back)</option>
+                        <option value="Front vent only"                 <?php echo $row['UnderfloorVents'] == "Front vent only" ? " selected" : ""; ?>>Front vent only</option>
+                        <option value="Back vent only"                  <?php echo $row['UnderfloorVents'] == "Back vent only" ? " selected" : ""; ?>>Back vent only</option>
+                        <option value="Vents partially blocked/covered" <?php echo $row['UnderfloorVents'] == "Vents partially blocked/covered" ? " selected" : ""; ?>>Vents partially blocked/coveredVents partially blocked</option>
+                        <option value="Other"                           <?php echo $row['UnderfloorVents'] == "Other" ? " selected" : ""; ?>>Other</option>
+                     </select>
+                  </span>
+               </div>
             <table>
             <tr>
                <th>Is Ventilation Sufficient?</th>
                <td>
-                  <input type="checkbox"  name="isventltnsufficient" value="<?php echo ($row['IsVentltnSufficient']=='1' ? '1' : '0');?>" <?php echo ($row['IsVentltnSufficient']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="ventilationsufficient_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Building regulations state that there should be ventilation on two 
-                  opposing external walls of not less than 1500mm² per metre run of 
-                  external wall or 500mm² per metre² of floor area, whichever works 
-                  out to give the higher area of ventilation.IsVentltnSufficient
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox"  class="chk" name="isventltnsufficient" value="<?php echo ($row['IsVentltnSufficient']=='1' ? '1' : '0');?>" <?php echo ($row['IsVentltnSufficient']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="ventilationsufficient_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Building regulations state that there should be ventilation on two 
+                     opposing external walls of not less than 1500mm² per metre run of 
+                     external wall or 500mm² per metre² of floor area, whichever works 
+                     out to give the higher area of ventilation.IsVentltnSufficient
+                     </span>
+                     <p style="font-size : 14; text-align: right;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -273,14 +265,12 @@ function clean_input($data) {
                <th>Drainage Notes</th>
                <td>
                   <textarea name="drainagenotes" rows="3" cols="30" ><?php echo $row['DrainageNotes']?></textarea>
-               </td>
-               <td>
-               <div class="tooltip" id="drainagenotes_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  RICS: To indicate condition, issues associated with drainage system.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="drainagenotes_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     RICS: To indicate condition, issues associated with drainage system.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
          </table>

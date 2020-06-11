@@ -94,23 +94,25 @@ function clean_input($data) {
          <!--<h3>Survey No. : <?php echo $surveyid; ?> &nbsp; &nbsp; &nbsp;  UPRN : <?php echo $uprn; ?> &nbsp; &nbsp; &nbsp;    Address : <?php echo $address; ?></h3>-->
       </header>
       <style>
-         label {
-            font-weight: bold;
-            margin: 8px 5px 8px 5px;
-            float: left;
+<!--
+         table {
+            width:100%;
+            border: 0px solid black;
          }
-         span {
-            display: block;
-            overflow: hidden;
-            margin: 8px 5px 8px 5px;
-            padding: 0 4px 0 6px;
+         th {
+            width:40%;
+            /*border: 1px solid black;*/
          }
-         .gwinput input {
-            width: 200px;
+         td {
+            width:60%;
+            border: 0px solid black;
          }
+-->
+
          aside {
             color: purple;
          }
+
       </style>
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       <script>
@@ -177,70 +179,67 @@ function clean_input($data) {
             <tr>
                <th>Garden Wall Attached</th>
                <td>
-                  <input type="checkbox" id="gardenwallattachedChk" name="gardenwallattached" onchange="showgardenwallnotes() " value="<?php echo ($row['GardenWallAttached']=='1' ? '1' : '0');?>" <?php echo ($row['GardenWallAttached']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="gardenwallattached_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Exterior walls abutting the building can introduce damp into 
-                  walls and need to be dealt with as part of EEM retrofit process.
-                  </span>
-                  <p style="font-size : 14;margin-left:150px;"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" id="gardenwallattachedChk" name="gardenwallattached" onchange="showgardenwallnotes() " value="<?php echo ($row['GardenWallAttached']=='1' ? '1' : '0');?>" <?php echo ($row['GardenWallAttached']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="gardenwallattached_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Exterior walls abutting the building can introduce damp into 
+                     walls and need to be dealt with as part of EEM retrofit process.
+                     </span>
+                     <p style="font-size : 14;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
          </table>
-              
-            <label for="gardenwallnotes" id="gardenwallnotesHdr">Garden Wall Notes </label>
-            <span><input class="gwinput" type="text" id="gardenwallnotesSel" name="gardenwallnotes" value="<?php echo $row['GardenWallNotes']?>"></span>
-               <!--<th  >Garden Wall Notes</th>
-               <td>
-                  <input type="text" id="gardenwallnotesSel" name="gardenwallnotes" value="<?php echo $row['GardenWallNotes']?>">
-               </td>-->
+         <div class="query">
+            <label for="gardenwallnotes" id="gardenwallnotesHdr">Garden Wall Notes &nbsp; </label>
+            <span>
+               <input class="gwinput" type="text" id="gardenwallnotesSel" name="gardenwallnotes" value="<?php echo $row['GardenWallNotes']?>">
+            </span>
+         </div>
+            <!--<th  >Garden Wall Notes</th>
+            <td>
+               <input type="text" id="gardenwallnotesSel" name="gardenwallnotes" value="<?php echo $row['GardenWallNotes']?>">
+            </td>-->
          <table class="formsixteen" style="border: 0">
             <tr>
                <th>External Issues</th>
                <td>
                   <textarea name="externalIssues" rows="2" cols="25"><?php echo $row['ExternalIssues']?></textarea>
-               </td>
-               <td>
-               <div class="tooltip" id="externalIssues_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  There can be a wide variety of issues that can complicate the 
-                  thermal dynamics, moisture and opportunities for EEM on the 
-                  outside of the dwelling. These need to be noted and photographed 
-                  for evidence. 
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="externalIssues_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     There can be a wide variety of issues that can complicate the 
+                     thermal dynamics, moisture and opportunities for EEM on the 
+                     outside of the dwelling. These need to be noted and photographed 
+                     for evidence. 
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Retrofit Ready</th>
                <td>
-                  <select id="retrofitReady" name="retrofitReady" size="1" style="width: 200px;">
+                  <select id="retrofitReady" name="retrofitReady" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"          <?php echo $row['RetrofitReady'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"        <?php echo $row['RetrofitReady'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
                      <option value="Green"        <?php echo $row['RetrofitReady'] == "Green" ? " selected" : ""; ?>        >Green</option>
                      <option value="Not Inspected"<?php echo $row['RetrofitReady'] == "Not Inspected" ? " selected" : ""; ?>>Not Inspected</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="retrofitReady_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This gives the Assessor an opportunity to flag up any major 
-                  issues that might affect the installation of EEM. 
-                  Red: indicates that there is a fundamental reason for not 
-                  undertaking EEM or that there are severe complications.
-                  Amber: More investigations are required before a final decision can be made
-                  Green: There is no reason why EEM installations cannot be made immediately 
-                  and / or that the EEM installation will eradicate any existing condition issues / concerns
-                  Not inspected: If an element has not been inspected it is important to note 
-                  this as it may have a fundament effect on any works.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="retrofitReady_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This gives the Assessor an opportunity to flag up any major 
+                     issues that might affect the installation of EEM. 
+                     Red: indicates that there is a fundamental reason for not 
+                     undertaking EEM or that there are severe complications.
+                     Amber: More investigations are required before a final decision can be made
+                     Green: There is no reason why EEM installations cannot be made immediately 
+                     and / or that the EEM installation will eradicate any existing condition issues / concerns
+                     Not inspected: If an element has not been inspected it is important to note 
+                     this as it may have a fundament effect on any works.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
          </table>
