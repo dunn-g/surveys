@@ -91,11 +91,11 @@
                "', DampProofCourse='"              . clean_input($dampproofcourse) .
                "', DPCNotes='"                     . clean_input($dpcnotes) .
                "' WHERE surveyId=" . $surveyid;
-      echo "<br>";   
-      print_r($_POST);
-      echo "<br>";         
-      print_r($sql);
-      echo "<br>";  
+      #echo "<br>";   
+      #print_r($_POST);
+      #echo "<br>";         
+      #print_r($sql);
+      #echo "<br>";  
       
       if (mysqli_query( $dbc , $sql )) {
          echo "Record updated successfully";
@@ -240,13 +240,13 @@ function clean_input($data) {
             <tr>
                <th>Significance</th>
                <td>
-                  <input type="checkbox"  name="wallsext1significance" value="<?php echo ($row['WallsExt1Significance']=='1' ? '1' : '0');?>" <?php echo ($row['WallsExt1Significance']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="wallsext1significance" value="<?php echo ($row['WallsExt1Significance']=='1' ? '1' : '0');?>" <?php echo ($row['WallsExt1Significance']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Moisture Permeability</th>
                <td>
-                  <select id="wallsext1permChk" name="wallsext1permeability" onchange="showWallsExt1MoistPermCompd()" size="1" style="width: 200px;">
+                  <select id="wallsext1permChk" name="wallsext1permeability" onchange="showWallsExt1MoistPermCompd()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Moisture open"   <?php echo $row['WallsExt1Permeability'] == "Moisture open" ? " selected" : ""; ?>  >Moisture open</option>
                      <option value="Moisture closed" <?php echo $row['WallsExt1Permeability'] == "Moisture closed" ? " selected" : ""; ?>>Moisture closed</option>
@@ -257,7 +257,7 @@ function clean_input($data) {
             <tr>
                <th id="wallsext1permbltycomprsdHdr">Permeability Compromised</th>
                <td>
-                  <select id="wallsext1permbltycomprsdSel" name="wallsext1permbltycomprsd" onchange="disableIntExtComprsd()" size="1" style="width: 200px;">
+                  <select id="wallsext1permbltycomprsdSel" name="wallsext1permbltycomprsd" onchange="disableIntExtComprsd()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Externally" <?php echo $row['WallsExt1PermbltyComprsd'] == "Externally" ? " selected" : ""; ?>>Externally</option>
                      <option value="Internally" <?php echo $row['WallsExt1PermbltyComprsd'] == "Internally" ? " selected" : ""; ?>>Internally</option>
@@ -268,7 +268,7 @@ function clean_input($data) {
             <tr>
                <th id="ext1permcompdintextHdr">Where Compromised?</th>
                <td>
-                  <select id="ext1permcompdintextSel" name="ext1permcompdintext[]" multiple="multiple" size="4" style="width: 200px;"> <!--multiple-->
+                  <select id="ext1permcompdintextSel" name="ext1permcompdintext[]" multiple="multiple" size="4" > <!--multiple-->
                      <optgroup label="Externally" id="ext1permcompdintextext">
                         <option value="" disabled >Please choose...</option>
                         <option value="Cement render"  <?php echo (isset($ext1pcieAry) && in_array('Cement render', $ext1pcieAry))   ? " selected" : ""; ?>>Cement render</option>
@@ -288,7 +288,7 @@ function clean_input($data) {
             <tr>
                <th>Wall Type</th>
                <td>
-                  <select id="wallsext1type" name="wallsext1type" size="1" style="width: 200px;">
+                  <select id="wallsext1type" name="wallsext1type" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Stone:granite or whinstone"   <?php echo $row['WallsExt1Type'] == "Stone:granite or whinstone" ? " selected" : ""; ?>  >Stone:granite or whinstone</option>
                      <option value="Stone:sandstone or limestone" <?php echo $row['WallsExt1Type'] == "Stone:sandstone or limestone" ? " selected" : ""; ?>>Stone:sandstone or limestone</option>
@@ -314,7 +314,7 @@ function clean_input($data) {
             <tr>
                <th id="wallsext1inslatntypeHdr">Insulation</th>
                <td>
-                  <select id="wallsext1inslatntypeSel" name="wallsext1insulation" size="1" style="width: 200px;"> <!--multiple-->
+                  <select id="wallsext1inslatntypeSel" name="wallsext1insulation" size="1" > <!--multiple-->
                      <option value="" disabled selected>Please choose...</option>
                      <option value="SWI EWI"                 <?php echo $row['WallsExt1Insulation'] == "SWI EWI" ? " selected" : ""; ?>                >SWI EWI</option>
                      <option value="SWI IWI"                 <?php echo $row['WallsExt1Insulation'] == "SWI IWI" ? " selected" : ""; ?>                >SWI IWI</option>
@@ -330,7 +330,7 @@ function clean_input($data) {
             <tr>
                <th id="wallsext1inslatndepthHdr">Insulation Thickness </th>
                <td>
-                  <select id="wallsext1inslatndepthSel" name="wallsext1insulationthickness" size="1" style="width: 200px;">
+                  <select id="wallsext1inslatndepthSel" name="wallsext1insulationthickness" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="50mm"   <?php echo $row['WallsExt1InsulationThickness'] == "50mm" ? " selected" : ""; ?>   >50mm</option>
                      <option value="100mm"  <?php echo $row['WallsExt1InsulationThickness'] == "100mm" ? " selected" : ""; ?>  >100mm</option>
@@ -343,7 +343,7 @@ function clean_input($data) {
             <tr>
                <th>Insulation Type</th>
                <td>
-                  <select id="wallsext1insulationtype" name="wallsext1insulationtype" size="1" style="width: 200px;">
+                  <select id="wallsext1insulationtype" name="wallsext1insulationtype" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="EPS/XPS"            <?php echo $row['WallsExt1InsulationType'] == "EPS/XPS" ? " selected" : ""; ?>           >EPS/XPS</option>
                      <option value="Phenolic/PIR/PUR"   <?php echo $row['WallsExt1InsulationType'] == "Phenolic/PIR/PUR" ? " selected" : ""; ?>  >Phenolic/PIR/PUR</option>
@@ -356,7 +356,7 @@ function clean_input($data) {
             <tr>
                <th>Retrofit</th>
                <td>
-                  <select id="wallsext1retrofit" name="wallsext1retrofit" size="1" style="width: 200px;">
+                  <select id="wallsext1retrofit" name="wallsext1retrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['WallsExt1Retrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['WallsExt1Retrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
@@ -374,7 +374,7 @@ function clean_input($data) {
             <tr>
                <th>Damp Proof Course</th>
                <td>
-                  <select id="dampproofcourse" name="dampproofcourse" size="1" style="width: 200px;">
+                  <select id="dampproofcourse" name="dampproofcourse" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"                     <?php echo $row['DampProofCourse'] == "None" ? " selected" : ""; ?>                    >None</option>
                      <option value="Unknown"                  <?php echo $row['DampProofCourse'] == "Unknown" ? " selected" : ""; ?>                 >Unknown</option>

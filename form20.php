@@ -228,13 +228,13 @@ function clean_input($data) {
             <tr>
                <th>Rainwater Significant</th>
                <td>
-                  <input type="checkbox"  name="rwsignificant" value="<?php echo ($row['RainwaterSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['RainwaterSignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="rwsignificant" value="<?php echo ($row['RainwaterSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['RainwaterSignificant']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Rainwater Condition</th>
                <td>
-                  <select id="rwgcondition" name="rwgcondition[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="rwgcondition" name="rwgcondition[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Good"                      <?php echo (isset($rwgCondAry) && in_array('Good', $rwgCondAry))                      ? " selected" : "" ; ?>>Good</option>
                      <option value="Blocked/Broken"            <?php echo (isset($rwgCondAry) && in_array('Blocked/Broken', $rwgCondAry))            ? " selected" : "" ; ?>>Blocked/Broken</option>
@@ -243,22 +243,20 @@ function clean_input($data) {
                      <option value="Staining evident"          <?php echo (isset($rwgCondAry) && in_array('Staining evident', $rwgCondAry))        ? " selected" : "" ; ?>>Staining evident</option>
                      <option value="Fascia boards poor"        <?php echo (isset($rwgCondAry) && in_array('Fascia boards poor', $rwgCondAry))          ? " selected" : "" ; ?>>Fascia boards poor</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="rwgcndtn_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To indicate potential source of damp issues remembering that 
-                  dry spells might distort the issues associated with poorly 
-                  operating drainage systems.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="rwgcndtn_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To indicate potential source of damp issues remembering that 
+                     dry spells might distort the issues associated with poorly 
+                     operating drainage systems.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Rainwater Goods Retrofit</th>
                <td>
-                  <select id="rwgoodsretrofit" name="rwgoodsretrofit" size="1" style="width: 200px;">
+                  <select id="rwgoodsretrofit" name="rwgoodsretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['RainwaterGoodsRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['RainwaterGoodsRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
@@ -276,49 +274,45 @@ function clean_input($data) {
             <tr>
                <th>Chimney Significant</th>
                <td>
-                  <input type="checkbox"  name="chimneysignificant" value="<?php echo ($row['ChimneySignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ChimneySignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="chimneysignificant" value="<?php echo ($row['ChimneySignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ChimneySignificant']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr> 
             <tr>
                <th>Chimney Vent</th>
                <td>
-                  <select id="chimneyVent" name="chimneyvent" size="1" style="width: 200px;">
+                  <select id="chimneyVent" name="chimneyvent" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Vented and Weatherproofed" <?php echo $row['ChimneyVent'] == "Vented and Weatherproofed" ? " selected" : ""; ?>>Vented and Weatherproofed</option>
                      <option value="Vented only"             <?php echo $row['ChimneyVent'] == "Vented only" ? " selected" : ""; ?>>Vented only</option>
                      <option value="Not vented (capped)"     <?php echo $row['ChimneyVent'] == "Not vented (capped)" ? " selected" : ""; ?>>Not vented (capped)</option>
                      <option value="Unknown"                 <?php echo $row['ChimneyVent'] == "Unknown" ? " selected" : ""; ?>>Unknown</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="rwgcndtn_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To identify if the chimneys are providing a ventilation route 
-                  but also are at risk of water penetration.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="rwgcndtn_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To identify if the chimneys are providing a ventilation route 
+                     but also are at risk of water penetration.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Chimney Retrofit</th>
                <td>
-                  <select id="chimneyretrofit" name="chimneyretrofit" size="1" style="width: 200px;">
+                  <select id="chimneyretrofit" name="chimneyretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"                    <?php echo $row['ChimneyRetrofit'] == "None" ? " selected" : ""; ?>                   >None</option>
                      <option value="Good condition"          <?php echo $row['ChimneyRetrofit'] == "Good condition" ? " selected" : ""; ?>         >Good condition</option>
                      <option value="Poor condition (repair)" <?php echo $row['ChimneyRetrofit'] == "Poor condition (repair)" ? " selected" : ""; ?>>Poor condition (repair)</option>
                      <option value="Poor condition (remove)" <?php echo $row['ChimneyRetrofit'] == "Poor condition (remove)" ? " selected" : ""; ?>>Poor condition (remove)</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="chmnyretrofit_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Slightly different as not part of an EEM retrofit, but condition 
-                  might have an impact.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="chmnyretrofit_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Slightly different as not part of an EEM retrofit, but condition 
+                     might have an impact.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -330,13 +324,13 @@ function clean_input($data) {
             <tr>
                <th>Roof Significant</th>
                <td>
-                  <input type="checkbox"  name="roofsignificant" value="<?php echo ($row['RoofSignificant']==1 ? 1 : 0);?>" <?php echo ($row['RoofSignificant']==1 ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="roofsignificant" value="<?php echo ($row['RoofSignificant']==1 ? 1 : 0);?>" <?php echo ($row['RoofSignificant']==1 ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Main Roof Type</th>
                <td>
-                  <select id="mainrooftypeChk" name="mainrooftype" onchange="disableMainRoofCoveringType()" size="1" style="width: 200px;">
+                  <select id="mainrooftypeChk" name="mainrooftype" onchange="disableMainRoofCoveringType()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Pitched" <?php echo $row['MainRoofType'] == "Pitched" ? " selected" : ""; ?>>Pitched</option>
                      <option value="Flat"    <?php echo $row['MainRoofType'] == "Flat" ? " selected" : ""; ?>   >Flat</option>
@@ -346,7 +340,7 @@ function clean_input($data) {
             <tr>
                <th>Main Roof Covering</th>
                <td>
-                  <select id="mainroofcoveringSel" name="mainroofcovering" size="1" style="width: 200px;">
+                  <select id="mainroofcoveringSel" name="mainroofcovering" size="1" >
                      <optgroup label="Pitched" id="mainroofcoverPitched" >
                         <option value="" disabled selected>Please choose...</option>
                         <option value="Tiles"    <?php echo (($row['MainRoofCovering'] == "Tiles")    and ($row['MainRoofType'] == "Pitched")) ? " selected" : ""; ?>>Tiles</option>
@@ -374,41 +368,37 @@ function clean_input($data) {
             <tr>
                <th>Main Eave & Verge Detail</th>
                <td>
-                  <select id="roofeavevergedetail" name="roofeavevergedetail" size="1" style="width: 200px;">
+                  <select id="roofeavevergedetail" name="roofeavevergedetail" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="&gt;100mm soffit at eaves and verges" <?php echo $row['RoofEaveVergedetail'] == "&gt;100mm soffit at eaves and verges" ? " selected" : ""; ?>>&gt;100mm soffit at eaves and verges</option>
                      <option value="&lt;100mm soffit at eaves and verges" <?php echo $row['RoofEaveVergedetail'] == "&lt;100mm soffit at eaves and verges" ? " selected" : ""; ?>>&lt;100mm soffit at eaves and verges</option>
                      <option value="No soffits"                           <?php echo $row['RoofEaveVergedetail'] == "No soffits" ? " selected" : ""; ?>                          >No soffits</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="eaveverge_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This highlights the potential need for roof extensions if EWI 
-                  is being considered.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="eaveverge_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This highlights the potential need for roof extensions if EWI 
+                     is being considered.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Main Roof Vented</th>
                <td>
-                  <input type="checkbox" name="roofvented" value="<?php echo ($row['RoofVented']=='1' ? '1' : '0');?>" <?php echo ($row['RoofVented']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="roofvented_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  External vents visible – eaves, tiles etc
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="roofvented" value="<?php echo ($row['RoofVented']=='1' ? '1' : '0');?>" <?php echo ($row['RoofVented']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="roofvented_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     External vents visible – eaves, tiles etc
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Roof Retrofit</th>
                <td>
-                  <select id="roofretrofit" name="roofretrofit" size="1" style="width: 200px;">
+                  <select id="roofretrofit" name="roofretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['RoofRetrofit'] == "Red" ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"         <?php echo $row['RoofRetrofit'] == "Amber" ? " selected" : ""; ?>>Amber</option>
@@ -420,7 +410,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Type</th>
                <td>
-                  <select id="roof2typeChk" name="roof2type" onchange="disableRoof2CoveringType()" size="1" style="width: 200px;">
+                  <select id="roof2typeChk" name="roof2type" onchange="disableRoof2CoveringType()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Pitched" <?php echo $row['Roof2Type'] == "Pitched" ? " selected" : ""; ?>>Pitched</option>
                      <option value="Flat"    <?php echo $row['Roof2Type'] == "Flat"    ? " selected" : ""; ?>   >Flat</option>
@@ -430,7 +420,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Covering</th>
                <td>
-                  <select id="roof2covering" name="roof2covering" size="1" style="width: 200px;">
+                  <select id="roof2covering" name="roof2covering" size="1" >
                      <optgroup label="Pitched" id="roof2coverPitched" >
                         <option value="" disabled selected>Please choose...</option>
                         <option value="Tiles"    <?php echo $row['Roof2Covering'] == "Tiles/"   ? " selected" : ""; ?>>Tiles</option>
@@ -458,7 +448,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Eaves & Verge Detail</th>
                <td>
-                  <select id="roof2eavesvergedetail" name="roof2eavesvergedetail" size="1" style="width: 200px;">
+                  <select id="roof2eavesvergedetail" name="roof2eavesvergedetail" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="&gt;100mm Soffit" <?php echo $row['Roof2EavesVergeDetail'] == "&gt;100mm Soffit" ? " selected" : ""; ?>>&gt;100mm Soffit</option>
                      <option value="&lt;100mm Soffit" <?php echo $row['Roof2EavesVergeDetail'] == "&lt;100mm Soffit" ? " selected" : ""; ?>>&lt;100mm Soffit</option>
@@ -475,7 +465,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Retrofit</th>
                <td>
-                  <select id="roof2retrofit" name="roof2retrofit" size="1" style="width: 200px;">
+                  <select id="roof2retrofit" name="roof2retrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['Roof2Retrofit'] == "Red"           ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"         <?php echo $row['Roof2Retrofit'] == "Amber"         ? " selected" : ""; ?>>Amber</option>
@@ -487,7 +477,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 3 Type</th>
                <td>
-                  <select id="roof3typeChk" name="roof3type" onchange="disableRoof3CoveringType()" size="1" style="width: 200px;">
+                  <select id="roof3typeChk" name="roof3type" onchange="disableRoof3CoveringType()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Pitched" <?php echo $row['Roof3Type'] == "Pitched" ? " selected" : ""; ?>>Pitched</option>
                      <option value="Flat"    <?php echo $row['Roof3Type'] == "Flat"    ? " selected" : ""; ?>>Flat</option>
@@ -497,7 +487,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 3 Covering</th>
                <td>
-                  <select id="roof3covering" name="roof3covering" size="1" style="width: 200px;">
+                  <select id="roof3covering" name="roof3covering" size="1" >
                      <optgroup label="Pitched" id="roof3coverPitched" >
                         <option value="" disabled selected>Please choose...</option>
                         <option value="Tiles"    <?php echo $row['Roof3Covering'] == "Tiles/"   ? " selected" : ""; ?>>Tiles</option>
@@ -525,7 +515,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 3 Eaves & Verge Detail</th>
                <td>
-                  <select id="roof3eavesvergedetail" name="roof3eavesvergedetail" size="1" style="width: 200px;">
+                  <select id="roof3eavesvergedetail" name="roof3eavesvergedetail" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="&gt;100mm Soffit" <?php echo $row['Roof3EavesVergeDetail'] == "&gt;100mm Soffit" ? " selected" : ""; ?>>&gt;100mm Soffit</option>
                      <option value="&lt;100mm Soffit" <?php echo $row['Roof3EavesVergeDetail'] == "&lt;100mm Soffit" ? " selected" : ""; ?>>&lt;100mm Soffit</option>
@@ -536,13 +526,13 @@ function clean_input($data) {
             <tr>
                <th>Roof 3 Vents</th>
                <td>
-                  <input type="checkbox"  name="roof3vents" value="<?php echo ($row['Roof3Vents']=='1' ? '1' : '0');?>" <?php echo ($row['Roof3Vents']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="roof3vents" value="<?php echo ($row['Roof3Vents']=='1' ? '1' : '0');?>" <?php echo ($row['Roof3Vents']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Roof 3 Retrofit</th>
                <td>
-                  <select id="roof3retrofit" name="roof3retrofit" size="1" style="width: 200px;">
+                  <select id="roof3retrofit" name="roof3retrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['Roof3Retrofit'] == "Red" ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"         <?php echo $row['Roof3Retrofit'] == "Amber" ? " selected" : ""; ?>>Amber</option>

@@ -289,59 +289,53 @@ function clean_input($data) {
             <tr>
                <th>Significant</th>
                <td>
-                  <input type="checkbox"  name="extWallSignificant" value="<?php echo ($row['ExtWallSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ExtWallSignificant']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="extWallSignificant_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Are they significant? If so, ensure photographic evidence is taken.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="extWallSignificant" value="<?php echo ($row['ExtWallSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ExtWallSignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="extWallSignificant_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Are they significant? If so, ensure photographic evidence is taken.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Moisture Permeability</th>
                <td>
-                  <select id="mainwallpermeabilityChk" name="mainwallpermeability" onchange="runFunctions()" size="1" style="width: 200px;">
+                  <select id="mainwallpermeabilityChk" name="mainwallpermeability" onchange="runFunctions()" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Moisture open"  <?php echo $row['MainWallPermeability'] == "Moisture open"   ? " selected" : ""; ?>>Moisture open</option>
                      <option value="Moisture closed"<?php echo $row['MainWallPermeability'] == "Moisture closed" ? " selected" : ""; ?>>Moisture closed</option>
                      <option value="Unknown"        <?php echo $row['MainWallPermeability'] == "Unknown"         ? " selected" : ""; ?>>Unknown</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="mainwallpermeability_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Refer to UKCMB guidance and BSI documentation
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="mainwallpermeability_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Refer to UKCMB guidance and BSI documentation
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th id="permcompdHdr">Permeability Compromised</th>
                <td>
-                  <select id="permeabilitycompromisedChk" name="permeabilitycompromised" multiple="multiple" onchange="disableWallPermComprmsd()" size="3" style="width: 200px;"> <!--multiple-->
+                  <select id="permeabilitycompromisedChk" name="permeabilitycompromised" multiple="multiple" onchange="disableWallPermComprmsd()" size="3" > <!--multiple-->
                      <option value="" disabled >Please choose...</option>
                      <option value="Externally"<?php echo $row['PermeabilityCompromised'] == "Externally" ? " selected" : ""; ?>>Externally</option>
                      <option value="Internally"<?php echo $row['PermeabilityCompromised'] == "Internally" ? " selected" : ""; ?>>Internally</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extpermcompd_tt"  >
-                  <span id="permcompdtt" class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This identifies where any loss of breathability issues 
-                  lie – externally, internally
-                  </span>
-                  <p id="permcompdtt_i"  style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extpermcompd_tt"  >
+                     <span id="permcompdtt" class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This identifies where any loss of breathability issues 
+                     lie – externally, internally
+                     </span>
+                     <p id="permcompdtt_i"  style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th id="wallpermcompdHdr">Where Compromised?</th>
                <td>
-                  <select id="wallpermcompdId" name="wallpermcompd[]" multiple="multiple" size="4" style="width: 200px;"> <!--multiple-->
+                  <select id="wallpermcompdId" name="wallpermcompd[]" multiple="multiple" size="4" > <!--multiple-->
                      <optgroup label="Externally" id="wallpermcompdext">
                         <option value="" disabled >Please choose...</option>
                         <option value="Cement render"  <?php echo (isset($wallpermcompdAry) && in_array('Cement render', $wallpermcompdAry))   ? " selected" : ""; ?>>Cement render</option>
@@ -361,7 +355,7 @@ function clean_input($data) {
             <tr>
                <th>Main Wall Type</th>
                <td>
-                  <select id="mainwalltypeSel" name="mainwalltype[]" multiple="multiple" size="3" style="width: 200px;">
+                  <select id="mainwalltypeSel" name="mainwalltype[]" multiple="multiple" size="3" >
                      <optgroup label="Moisture open" id="moistureopen">
                         <option value="" disabled >Please choose...</option>
                         <option value="Stone:granite or whinstone"  <?php echo (isset($mainwalltypeAry) && in_array('Stone:granite or whinstone', $mainwalltypeAry))   ? " selected" : ""; ?>>Stone:granite or whinstone</option>
@@ -378,16 +372,14 @@ function clean_input($data) {
                         <option value="Park home wall"<?php echo (isset($mainwalltypeAry) && in_array('Park home wall', $mainwalltypeAry)) ? " selected" : ""; ?>>Park home wall</option>
                      </optgroup>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="mainwalltype_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  A basic understanding of material type gives an indication 
-                  of what solutions might be available in order to improve 
-                  thermal performance
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="mainwalltype_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     A basic understanding of material type gives an indication 
+                     of what solutions might be available in order to improve 
+                     thermal performance
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -403,7 +395,7 @@ function clean_input($data) {
             <tr>
                <th id="mainwallinslatntypeHdr">Insulation Type</th>
                <td>
-                  <select id="mainwallinslatntypeSel" name="extwallinstype[]" multiple="multiple" size="3" style="width: 200px;"> <!--multiple-->
+                  <select id="mainwallinslatntypeSel" name="extwallinstype[]" multiple="multiple" size="3" > <!--multiple-->
                      <option value="" disabled >Please choose...</option>
                      <option value="SWI EWI"                <?php echo (isset($instypeAry) && in_array('SWI EWI', $instypeAry))                 ? " selected" : ""; ?>>SWI EWI</option>
                      <option value="SWI IWI"                <?php echo (isset($instypeAry) && in_array('SWI IWI', $instypeAry))                 ? " selected" : ""; ?>>SWI IWI</option>
@@ -419,7 +411,7 @@ function clean_input($data) {
             <tr>
                <th id="mainwallinslatndepthHdr">Insulation Thickness</th>
                <td>
-                  <select id="mainwallinslatndepthSel" name="extwallinsthickness[]" multiple="multiple" size="3" style="width: 200px;">
+                  <select id="mainwallinslatndepthSel" name="extwallinsthickness[]" multiple="multiple" size="3" >
                      <option value="" disabled >Please choose...</option>
                      <option value="50mm"    <?php echo (isset($insthcknssAry) && in_array('50mm', $insthcknssAry))    ? " selected" : ""; ?>>50mm</option>
                      <option value="100mm"   <?php echo (isset($insthcknssAry) && in_array('100mm', $insthcknssAry))   ? " selected" : ""; ?>>100mm</option>
@@ -432,30 +424,28 @@ function clean_input($data) {
             <tr>
                <th>Retrofit</th>
                <td>
-                  <select id="extwallretrofit" name="extwallretrofit" size="1" style="width: 200px;">
+                  <select id="extwallretrofit" name="extwallretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"          <?php echo $row['ExtWallRetrofit'] == "Red"           ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"        <?php echo $row['ExtWallRetrofit'] == "Amber"         ? " selected" : ""; ?>>Amber</option>
                      <option value="Green"        <?php echo $row['ExtWallRetrofit'] == "Green"         ? " selected" : ""; ?>>Green</option>
                      <option value="Not Inspected"<?php echo $row['ExtWallRetrofit'] == "Not Inspected" ? " selected" : ""; ?>>Not Inspected</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extwallretrofit_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This gives the Assessor an opportunity to flag up any major 
-                  issues that might affect the installation of EEM.
-                  Red: indicates that there is a fundamental reason for not 
-                     undertaking EEM or that there are severe complications.
-                  Amber: More investigations are required before a final decision can be made
-                  Green: There is no reason why EEM installations cannot be made 
-                     immediately and / or that the EEM installation will eradicate 
-                     any existing condition issues / concerns
-                  Not inspected: If an element has not been inspected it is important 
-                     to note this as it may have a fundament effect on any works.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extwallretrofit_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This gives the Assessor an opportunity to flag up any major 
+                     issues that might affect the installation of EEM.
+                     Red: indicates that there is a fundamental reason for not 
+                        undertaking EEM or that there are severe complications.
+                     Amber: More investigations are required before a final decision can be made
+                     Green: There is no reason why EEM installations cannot be made 
+                        immediately and / or that the EEM installation will eradicate 
+                        any existing condition issues / concerns
+                     Not inspected: If an element has not been inspected it is important 
+                        to note this as it may have a fundament effect on any works.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -467,7 +457,7 @@ function clean_input($data) {
             <tr>
                <th>Damp Proof Course</th>
                <td>
-                  <select id="dampproofcourse" name="dampproofcourse" size="1" style="width: 200px;">
+                  <select id="dampproofcourse" name="dampproofcourse" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"                          <?php echo $row['DampProofCourse'] == "None"                           ? " selected" : ""; ?>>None</option>
                      <option value="Unknown"                       <?php echo $row['DampProofCourse'] == "Unknown"                        ? " selected" : ""; ?>>Unknown</option>
@@ -478,16 +468,14 @@ function clean_input($data) {
                      <option value="Electro Osmosis"               <?php echo $row['DampProofCourse'] == "Electro Osmosis"                ? " selected" : ""; ?>>Electro Osmosis</option>
                      <option value="Dutch System"                  <?php echo $row['DampProofCourse'] == "Dutch System"                   ? " selected" : ""; ?>>Dutch System</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="dampProofCourse_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This helps to identify past levels of damp and the effectiveness
-                  of any injected DPC, also highlights other sources of damp that 
-                  might be affecting the building
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="dampProofCourse_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This helps to identify past levels of damp and the effectiveness
+                     of any injected DPC, also highlights other sources of damp that 
+                     might be affecting the building
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr> 
             <tr>

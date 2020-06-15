@@ -137,70 +137,64 @@ function clean_input($data) {
             <tr>
                <th>Ext. Doors Significant</th>
                <td>
-                  <input type="checkbox" name="extdoorssignificant" value="<?php echo ($row['ExtDoorsSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsSignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="extdoorssignificant" value="<?php echo ($row['ExtDoorsSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsSignificant']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Ext. Door Frame</th>
                <td>
-                  <select id="extdoorframe" name="extdoorframe[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="extdoorframe" name="extdoorframe[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wood"  <?php echo (isset($doorframeAry) && in_array('Wood', $doorframeAry)) ? " selected" : ""; ?>>Wood</option>
                      <option value="PVCu"  <?php echo (isset($doorframeAry) && in_array('PVCu', $doorframeAry)) ? " selected" : ""; ?>>PVCu</option>
                      <option value="GRP"   <?php echo (isset($doorframeAry) && in_array('GRP',  $doorframeAry)) ? " selected" : ""; ?>>GRP</option>
                      <option value="Other" <?php echo (isset($doorframeAry) && in_array('Other',$doorframeAry)) ? " selected" : ""; ?>>Other</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extdoorframe_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Frame material gives an indication of thermal performance and 
-                  opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extdoorframe_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Frame material gives an indication of thermal performance and 
+                     opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>               
             <tr>
                <th>Ext. Door Glazing</th>
                <td>
-                  <select id="extdoorglazing" name="extdoorglazing[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="extdoorglazing" name="extdoorglazing[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Single"           <?php echo (isset($doorglazeAry) && in_array('Single', $doorglazeAry))           ? " selected" : ""; ?>>Single</option>
                      <option value="Double Pre 2002"  <?php echo (isset($doorglazeAry) && in_array('Double Pre 2002', $doorglazeAry))  ? " selected" : ""; ?>>Double Pre 2002</option>
                      <option value="Double Post 2002" <?php echo (isset($doorglazeAry) && in_array('Double Post 2002', $doorglazeAry)) ? " selected" : ""; ?>>Double Post 2002</option>
                      <option value="Triple"           <?php echo (isset($doorglazeAry) && in_array('Triple', $doorglazeAry))           ? " selected" : ""; ?>>Triple</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extdoorframe_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Type of glazing gives an indication of thermal performance and 
-                  opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extdoorframe_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Type of glazing gives an indication of thermal performance and 
+                     opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Ext. Doors Draught Proof</th>
                <td>
-                  <input type="checkbox" name="extdoorsdraughtproof" value="<?php echo ($row['ExtDoorsDraught']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsDraught']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="extdoorsdraughtproof_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Draughtiness gives an indication of thermal performance and 
-                  opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="extdoorsdraughtproof" value="<?php echo ($row['ExtDoorsDraught']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsDraught']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="extdoorsdraughtproof_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Draughtiness gives an indication of thermal performance and 
+                     opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Door Reveals Internal</th>
                <td>
-                  <select id="doorrevealsinternal" name="doorrevealsinternal" size="1" style="width: 200px;">
+                  <select id="doorrevealsinternal" name="doorrevealsinternal" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="&gt;20mm frame width" <?php echo $row['DoorRevealsInternal'] == "&gt;20mm frame width" ? " selected" : ""; ?>>&gt;20mm frame width</option>
                      <option value="&lt;20mm frame width" <?php echo $row['DoorRevealsInternal'] == "&lt;20mm frame width" ? " selected" : ""; ?>>&lt;20mm frame width</option>
@@ -210,7 +204,7 @@ function clean_input($data) {
             <tr>
                <th>Door Reveals External</th>
                <td>
-                  <select id="doorrevealsexternal" name="doorrevealsexternal" size="1" style="width: 200px;">
+                  <select id="doorrevealsexternal" name="doorrevealsexternal" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="&gt;20mm frame width" <?php echo $row['DoorRevealsExternal'] == "&gt;20mm frame width" ? " selected" : ""; ?>>&gt;20mm frame width</option>
                      <option value="&lt;20mm frame width" <?php echo $row['DoorRevealsExternal'] == "&lt;20mm frame width" ? " selected" : ""; ?>>&lt;20mm frame width</option>
@@ -220,42 +214,38 @@ function clean_input($data) {
             <tr>
                <th>Ext Doors Secure</th>
                <td>
-                  <input type="checkbox" name="extdoorssecure" value="<?php echo ($row['ExtDoorsSecure']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsSecure']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="extdoorssecure_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This relates to a home complying with standard insurance requests 
-                  to be secured with 5 lever locks / multi-point locking mechanisms 
-                  or to comply with Secure By Design classification.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="extdoorssecure" value="<?php echo ($row['ExtDoorsSecure']=='1' ? '1' : '0');?>" <?php echo ($row['ExtDoorsSecure']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="extdoorssecure_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This relates to a home complying with standard insurance requests 
+                     to be secured with 5 lever locks / multi-point locking mechanisms 
+                     or to comply with Secure By Design classification.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>               
             <tr>
                <th>Door Seals</th>
                <td>
-                  <select id="doorseals" name="doorseals" size="1" style="width: 200px;">
+                  <select id="doorseals" name="doorseals" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="All frame seals good"  <?php echo $row['DoorSeals'] == "All frame seals good"  ? " selected" : ""; ?>>All frame seals good</option>
                      <option value="Some frame seals good" <?php echo $row['DoorSeals'] == "Some frame seals good" ? " selected" : ""; ?>>Some frame seals good</option>
                      <option value="No frame seals good"   <?php echo $row['DoorSeals'] == "No frame seals good"   ? " selected" : ""; ?>>No frame seals good</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="doorseals_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Junction between frame and walls can be a major source of rainwater ingress.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="doorseals_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Junction between frame and walls can be a major source of rainwater ingress.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Ext Doors Retrofit</th>
                <td>
-                  <select id="extdoorsretrofit" name="extdoorsretrofit" size="1" style="width: 200px;">
+                  <select id="extdoorsretrofit" name="extdoorsretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['ExtDoorsRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['ExtDoorsRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
@@ -273,7 +263,7 @@ function clean_input($data) {
             <tr>
                <th>Lobby</th>
                <td>
-                  <select id="lobby" name="lobby" size="1" style="width: 200px;">
+                  <select id="lobby" name="lobby" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="External lobby one entrance"  <?php echo $row['Lobby'] == "External lobby one entrance" ? " selected" : ""; ?> >External lobby one entrance</option>
                      <option value="External lobby all entrances" <?php echo $row['Lobby'] == "External lobby all entrances" ? " selected" : ""; ?>>External lobby all entrances</option>
@@ -281,15 +271,13 @@ function clean_input($data) {
                      <option value="Internal lobby all entrances" <?php echo $row['Lobby'] == "Internal lobby all entrances" ? " selected" : ""; ?>>Internal lobby all entrances</option>
                      <option value="None"                         <?php echo $row['Lobby'] == "None" ? " selected" : ""; ?>                        >None</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="lobby_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  The presence of lobbies gives an indication of thermal performance
-                  and opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="lobby_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     The presence of lobbies gives an indication of thermal performance
+                     and opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
          </table>

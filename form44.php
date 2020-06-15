@@ -111,13 +111,13 @@ function clean_input($data) {
             <tr>
                <th>Roof Windows</th>
                <td>
-                  <input type="checkbox"  name="roofwindows" value="<?php echo ($row['Roofwindows']=='1' ? '1' : '0');?>" <?php echo ($row['Roofwindows']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="roofwindows" value="<?php echo ($row['Roofwindows']=='1' ? '1' : '0');?>" <?php echo ($row['Roofwindows']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Roof windows Retrofit</th>
                <td>
-                  <select id="roofwindowsretrofit" name="roofwindowsretrofit" size="1" style="width: 200px;">
+                  <select id="roofwindowsretrofit" name="roofwindowsretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['RoofwindowsRetrofit'] == "Red" ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"         <?php echo $row['RoofwindowsRetrofit'] == "Amber" ? " selected" : ""; ?>>Amber</option>

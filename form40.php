@@ -143,35 +143,31 @@ function clean_input($data) {
             <tr>
                <th>Windows Frame Significant</th>
                <td>
-                  <input type="checkbox"  name="windowsframesignificant" value="<?php echo ($row['WindowsFrameSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsFrameSignificant']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="wndwfrmsgnfcnt_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Some frames will be significant and might limit EEM choices.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="windowsframesignificant" value="<?php echo ($row['WindowsFrameSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsFrameSignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="wndwfrmsgnfcnt_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Some frames will be significant and might limit EEM choices.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Windows Glazing Significant</th>
                <td>
-                  <input type="checkbox"  name="windowsglazingsignificant" value="<?php echo ($row['WindowsGlazingSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsGlazingSignificant']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="glazing_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Some glazing might be significant and might limit EEM choices
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="windowsglazingsignificant" value="<?php echo ($row['WindowsGlazingSignificant']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsGlazingSignificant']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="glazing_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Some glazing might be significant and might limit EEM choices
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Windows Type</th>
                <td>
-                  <select id="windowstype" name="windowstype[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="windowstype" name="windowstype[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Single"           <?php echo (isset($windowtypeAry) && in_array('Single', $windowtypeAry))           ? " selected" : ""; ?>>Single</option>
                      <option value="Double Pre 2002"  <?php echo (isset($windowtypeAry) && in_array('Double Pre 2002', $windowtypeAry))  ? " selected" : ""; ?>>Double Pre 2002</option>
@@ -180,130 +176,116 @@ function clean_input($data) {
                      <option value="Triple"           <?php echo (isset($windowtypeAry) && in_array('Triple', $windowtypeAry))           ? " selected" : ""; ?>>Triple</option>
                      <option value="Other"            <?php echo (isset($windowtypeAry) && in_array('Other', $windowtypeAry))            ? " selected" : ""; ?>>Other</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="windowstype_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Type of glazing gives an indication of thermal performance 
-                  and opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="windowstype_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Type of glazing gives an indication of thermal performance 
+                     and opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Window Frame</th>
                <td>
-                  <select id="windowframeid" name="windowframe[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="windowframeid" name="windowframe[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wood"  <?php echo (isset($windowfrmAry) && in_array('Wood',  $windowfrmAry)) ? " selected" : ""; ?>>Wood</option>
                      <option value="Metal" <?php echo (isset($windowfrmAry) && in_array('Metal', $windowfrmAry)) ? " selected" : ""; ?>>Metal</option>
                      <option value="PVCu"  <?php echo (isset($windowfrmAry) && in_array('PVCu',  $windowfrmAry)) ? " selected" : ""; ?>>PVCu</option>
                      <option value="Other" <?php echo (isset($windowfrmAry) && in_array('Other', $windowfrmAry)) ? " selected" : ""; ?>>Other</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="windowframe_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Frame material gives an indication of thermal performance 
-                  and opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="windowframe_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Frame material gives an indication of thermal performance 
+                     and opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Window Draught Proofed</th><!-- ###chnge to checkbox!!!###-->
                <td>
-                  <input type="checkbox"  name="windowdraughtproofed" value="<?php echo ($row['WindowDraughtProofed']=='1' ? '1' : '0');?>" <?php echo ($row['WindowDraughtProofed']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="wndwfrmsgnfcnt_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Draughtiness gives an indication of thermal performance 
-                  and opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="windowdraughtproofed" value="<?php echo ($row['WindowDraughtProofed']=='1' ? '1' : '0');?>" <?php echo ($row['WindowDraughtProofed']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="wndwfrmsgnfcnt_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Draughtiness gives an indication of thermal performance 
+                     and opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr> 
             <tr>
                <th>Window Reveals Internal</th>
                <td>
-                  <select id="windowsrevealsinternal" name="windowsrevealsinternal[]" multiple="multiple" size="3" style="width: 200px;">
+                  <select id="windowsrevealsinternal" name="windowsrevealsinternal[]" multiple="multiple" size="3" >
                      <option value="" disabled >Please choose...</option>
                      <option value="&gt;20mm frame width" <?php echo (isset($winrevealsIntAry) && in_array('&gt;20mm frame width', $winrevealsIntAry)) ? " selected" : ""; ?>>&gt;20mm frame width</option>
                      <option value="&lt;20mm frame width" <?php echo (isset($winrevealsIntAry) && in_array('&lt;20mm frame width', $winrevealsIntAry)) ? " selected" : ""; ?>>&lt;20mm frame width</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="intreveal_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This highlights the potential limiting factor for IWI. 
-                  Windows may vary hence multiple choice.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="intreveal_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This highlights the potential limiting factor for IWI. 
+                     Windows may vary hence multiple choice.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Windows Reveals External</th>
                <td>
-                  <select id="windowsrevealsexternal" name="windowsrevealsexternal[]" multiple="multiple" size="3" style="width: 200px;">
+                  <select id="windowsrevealsexternal" name="windowsrevealsexternal[]" multiple="multiple" size="3" >
                      <option value="" disabled >Please choose...</option>
                      <option value="&gt;20mm frame width" <?php echo (isset($winrevealsExtAry) && in_array('&gt;20mm frame width', $winrevealsExtAry)) ? " selected" : ""; ?>>&gt;20mm frame width</option>
                      <option value="&lt;20mm frame width" <?php echo (isset($winrevealsExtAry) && in_array('&lt;20mm frame width', $winrevealsExtAry)) ? " selected" : ""; ?>>&lt;20mm frame width</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="extreveal_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This highlights the potential limiting factor for IWI. 
-                  Windows may vary hence multiple choice.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="extreveal_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This highlights the potential limiting factor for IWI. 
+                     Windows may vary hence multiple choice.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Window Seals</th>
                <td>
-                  <select id="windowseals" name="windowseals" size="1" style="width: 200px;">
+                  <select id="windowseals" name="windowseals" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="All frame seals good"  <?php echo $row['WindowSeals'] == "All frame seals good" ? " selected" : ""; ?> >All frame seals good</option>
                      <option value="Some frame seals good" <?php echo $row['WindowSeals'] == "Some frame seals good" ? " selected" : ""; ?>>Some frame seals good</option>
                      <option value="No frame seals good"   <?php echo $row['WindowSeals'] == "No frame seals good" ? " selected" : ""; ?>  >No frame seals good</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="seals_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Junction between frame and walls can be a major source of rainwater ingress
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="seals_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Junction between frame and walls can be a major source of rainwater ingress
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr> 
             <tr>
                <th>Windows Secure</th>
                <td>
-                  <input type="checkbox"  name="windowssecure" value="<?php echo ($row['WindowsSecure']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsSecure']=='1' ? 'checked="checked"' : '');?>>
-               </td>
-               <td>
-               <div class="tooltip" id="secure_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This relates to a home complying with standard insurance 
-                  requests to be secured with internal locking mechanism or 
-                  to comply with Secure By Design classification
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <input type="checkbox" class="chk" name="windowssecure" value="<?php echo ($row['WindowsSecure']=='1' ? '1' : '0');?>" <?php echo ($row['WindowsSecure']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="secure_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This relates to a home complying with standard insurance 
+                     requests to be secured with internal locking mechanism or 
+                     to comply with Secure By Design classification
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr> 
             <tr>
                <th>Windows Retrofit</th>
                <td>
-                  <select id="windowsretrofit" name="windowsretrofit" size="1" style="width: 200px;">
+                  <select id="windowsretrofit" name="windowsretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['WindowsRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['WindowsRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>

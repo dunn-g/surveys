@@ -114,10 +114,10 @@ function clean_input($data) {
              if (!document.getElementById) return;
              obj1 = document.getElementById("thermallyseparatedSel");
              obj2 = document.getElementById("thermallyseparatedHdr");
-             tstt = document.getElementById("thermallyseparated_tt");
+             <!--tstt = document.getElementById("thermallyseparated_tt");-->
              obj1.style.display="none";
              obj2.style.display="none";
-             tstt.style.display="none";
+             <!--tstt.style.display="none";-->
          }
 
          function showthermalseparation() {
@@ -126,10 +126,10 @@ function clean_input($data) {
              if (conobj.checked == true){
                obj1 = document.getElementById("thermallyseparatedSel");
                obj2 = document.getElementById("thermallyseparatedHdr");
-               tstt = document.getElementById("thermallyseparated_tt");
+               <!--tstt = document.getElementById("thermallyseparated_tt");-->
                obj1.style.display="block";
                obj2.style.display="block";
-               tstt.style.display="block";
+               <!--tstt.style.display="block";-->
              } else {
                hidethermalseparation();
              }
@@ -147,36 +147,36 @@ function clean_input($data) {
 
       <div class="main" style="display:table;">
       <form method="post" action="" >
-         <table class="formten" style="border: 0">
+         <table class="formsixteen" style="border: 0">
             <tr>
                <th>Conservatory</th>
                <td>
-                  <input type="checkbox" id="conservatoryChk" name="conservatory" onchange="showthermalseparation()" value="<?php echo ($row['Conservatory']=='1' ? '1' : '0');?>" <?php echo ($row['Conservatory']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="conservatoryChk" name="conservatory" onchange="showthermalseparation()" value="<?php echo ($row['Conservatory']=='1' ? '1' : '0');?>" <?php echo ($row['Conservatory']=='1' ? 'checked="checked"' : '');?>>
+                  <div class="tooltip" id="thermallyseparated_tt">
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Conservatories and how they relate the main building affect thermal
+                     performance and opportunities for improvements.
+                     </span>
+                     <p style="font-size : 14;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>               
-            <tr>
-               <th id="thermallyseparatedHdr">Thermally separated</th>
-               <td>
-                  <select id="thermallyseparatedSel" name="thermallyseparated" size="1" style="width: 200px;">
-                     <option value="" disabled selected>Please choose...</option>
-                     <option value="Thermally separated"  <?php echo $row['ThermallySeparated'] == "Thermally separated"   ? " selected" : ""; ?>>Thermally separated</option>
-                     <option value="No thermal separation"<?php echo $row['ThermallySeparated'] == "No thermal separation" ? " selected" : ""; ?>>No thermal separation</option>
-                  </select>
-               </td>
-               <td>
-               <div class="tooltip" id="thermallyseparated_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Conservatories and how they relate the main building affect thermal
-                  performance and opportunities for improvements.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
-               </td>
-            </tr>               
+         </table>
+         <div class="query" >
+            <label for="thermallyseparatedSel" id="thermallyseparatedHdr">Thermally separated &nbsp; </label>
+            <span>
+               <select id="thermallyseparatedSel" name="thermallyseparated" size="1">
+                  <option value="" disabled selected>Please choose...</option>
+                  <option value="Thermally separated"  <?php echo $row['ThermallySeparated'] == "Thermally separated"   ? " selected" : ""; ?>>Thermally separated</option>
+                  <option value="No thermal separation"<?php echo $row['ThermallySeparated'] == "No thermal separation" ? " selected" : ""; ?>>No thermal separation</option>
+               </select>
+            </span>
+         </div>
+         <table class="formsixteen" style="border: 0">
             <tr>
                <th>Conservatory Type</th>
                <td>
-                  <select id="conservatorytype" name="conservatorytype" size="1" style="width: 200px;">
+                  <select id="conservatorytype" name="conservatorytype" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Fully single glazed"     <?php echo $row['ConservatoryType'] == "Fully single glazed" ? " selected" : ""; ?>    >Fully single glazed</option>
                      <option value="Fully double glazed"     <?php echo $row['ConservatoryType'] == "Fully double glazed" ? " selected" : ""; ?>    >Fully double glazed</option>
@@ -189,7 +189,7 @@ function clean_input($data) {
             <tr>
                <th>Conservatory Heating</th>
                <td>
-                  <select id="conservatoryheat" name="conservatoryheat" size="1" style="width: 200px;">
+                  <select id="conservatoryheat" name="conservatoryheat" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"                     <?php echo $row['ConservatoryHeat'] == "None" ? " selected" : ""; ?>                     >None</option>
                      <option value="Connected to main heating"<?php echo $row['ConservatoryHeat'] == "Connected to main heating" ? " selected" : ""; ?>>Connected to main heating</option>
