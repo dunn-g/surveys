@@ -19,9 +19,7 @@
             'FROM aasurveyor s ' .
             'WHERE s.SurveyorId = "'. $_SESSION[ 'SurveyorId' ] .'"' ;
             
-   echo "<br>";         
    $rslt = mysqli_query( $dbc , $qry ) ;
-   #echo "<br>";         
 
    if ($rslt) {
       $row = mysqli_fetch_array( $rslt , MYSQLI_ASSOC ) ;
@@ -30,12 +28,11 @@
       mysqli_free_result( $rslt ) ;
 
    } 
-   echo "<br>";         
 #---------------------------------------------------------
 
    if (isset ($_POST['submit'])){
 
-      header("location:CreateNewForm10.php");
+      header("location:form10.php");
 
       # set vars not selected 
       $dateadded = date("Y-m-d H:i:s");
@@ -43,12 +40,10 @@
       # set checkboxes if blank
       (!isset($_POST['partywallissue']))  ? $partywallissue  = 0   : $partywallissue  = 1;
       (!isset($_POST['righttolight']))    ? $righttolight    = 0   : $righttolight    = 1;
-      (!isset($_POST['existingepc']))     ? $existingepc     = 0   : $existingepc     = 1;
       (!isset($_POST['conditionsurvey'])) ? $conditionsurvey = 0   : $conditionsurvey = 1;
       
       # set date textboxes if blank
-      (!isset($_POST['inspectiondate'])) ? $inspectiondate  = date("Y-m-d H:i:s") : $inspectiondate  = date("Y-m-d H:i:s",strtotime(clean_input($_POST['inspectiondate'])));
-      (!isset($_POST['epcdate']))        ? $epcdate         = DBNull.value        : $epcdate         = date("Y-m-d",strtotime($_POST['epcdate']));
+      (!isset($_POST['inspectiondate'])) ? $inspectiondate = date("Y-m-d H:i:s") : $inspectiondate  = date("Y-m-d H:i:s",strtotime(clean_input($_POST['inspectiondate'])));
       
       # set numeric textboxes if blank
       (!isset($_SESSION[ 'SurveyorId' ])) ? $surveyorid = '99' : $surveyorid       = clean_input($_SESSION['SurveyorId']);
@@ -67,18 +62,42 @@
       (!isset($_POST['bedroomOccupancy']))        ? $bedroomOccupancy        = '' : $bedroomOccupancy        = clean_input($_POST['bedroomOccupancy']);
       (!isset($_POST['orientation']))             ? $orientation             = '' : $orientation             = clean_input($_POST['orientation']);
 
-      $sql = "INSERT INTO basicinfo ".      
-               "(Inspectiondate, FloodRisk, ExposureRating, PartyWallIssue, PartyWallNotes, RightToLight, RightToLightNotes " . 
-               ", ExistingEPC, EPCDate, ConditionSurvey, ConditionSurveyNotes, RetrofitAdvisorFeedback " .
-               ", SurveyorID, Tenure, PropertyType, PropertyStyle, PropertyPosition, MainPropertyDate " . 
-               ", Storeys, NumberBedrooms, BedroomOccupancy, OrientationMainFrontElevation, DateAdded) " .
-               "VALUES('" . $inspectiondate ."', '". $floodrisk ."', '". $exposurerating ."', ". $partywallissue . 
-               ",  '". $partywallnotes ."', ". $righttolight .", '". $righttolightnotes ."', ". $existingepc . 
-               ",  '". $epcdate ."', ". $conditionsurvey .", '". $conditionsurveynotes ."', '". $retrofitadvisorfeedback .
-               "',  ". $surveyorid  .", '". $tenure ."', '". $propertyType ."', '". $propertyStyle ."', '". $propertyposition . 
-               "', '". $propertyDate ."', '". $storeys ."', '". $numBedrooms ."', '". $bedroomOccupancy ."', '". $orientation .
-               "', '". $dateadded . "')";
-               
+      # set notes if blank
+      (!isset($_POST['partywallnotes']))       ? $partywallnotes       = '' : $partywallnotes       = $_POST['partywallnotes'];
+      (!isset($_POST['righttolightnotes']))    ? $righttolightnotes    = '' : $righttolightnotes    = $_POST['righttolightnotes'];
+      (!isset($_POST['conditionsurveynotes'])) ? $conditionsurveynotes = '' : $conditionsurveynotes = $_POST['conditionsurveynotes'];
+
+      # these need to be set to cope with slightly different logic
+      if (!isset($_POST['existingepc']) ) {
+         $existingepc = 0;
+
+         $sql = "INSERT INTO basicinfo ".      
+                  "(Inspectiondate, SurveyorID, FloodRisk, ExposureRating, PartyWallIssue, PartyWallNotes, RightToLight, RightToLightNotes " . 
+                  ", ExistingEPC, ConditionSurvey, ConditionSurveyNotes, RetrofitAdvisorFeedback " .
+                  ",  Tenure, PropertyType, PropertyStyle, PropertyPosition, MainPropertyDate " . 
+                  ", Storeys, NumberBedrooms, BedroomOccupancy, OrientationMainFrontElevation, DateAdded) " .
+                  "VALUES('" . $inspectiondate ."', ". $surveyorid .", '". $floodrisk ."', '". $exposurerating ."', ". $partywallissue . 
+                  ",  '". $partywallnotes ."', ". $righttolight .", '". $righttolightnotes ."', ". $existingepc . 
+                  ", " . $conditionsurvey .", '". $conditionsurveynotes ."', '". $retrofitadvisorfeedback .
+                  "', '". $tenure ."', '". $propertyType ."', '". $propertyStyle ."', '". $propertyposition . 
+                  "', '". $propertyDate ."', '". $storeys ."', '". $numBedrooms ."', '". $bedroomOccupancy ."', '". $orientation .
+                  "', '". $dateadded . "')";
+      } else {
+         $existingepc = 1;
+         $epcdate = "'" . date("Y-m-d",strtotime($_POST['existingepcdate'])) . "'";
+         $sql = "INSERT INTO basicinfo ".      
+                  "(Inspectiondate, SurveyorID, FloodRisk, ExposureRating, PartyWallIssue, PartyWallNotes, RightToLight, RightToLightNotes " . 
+                  ", ExistingEPC, EPCDate, ConditionSurvey, ConditionSurveyNotes, RetrofitAdvisorFeedback " .
+                  ",  Tenure, PropertyType, PropertyStyle, PropertyPosition, MainPropertyDate " . 
+                  ", Storeys, NumberBedrooms, BedroomOccupancy, OrientationMainFrontElevation, DateAdded) " .
+                  "VALUES('" . $inspectiondate ."', ". $surveyorid .", '". $floodrisk ."', '". $exposurerating ."', ". $partywallissue . 
+                  ",  '". $partywallnotes ."', ". $righttolight .", '". $righttolightnotes ."', ". $existingepc . 
+                  ",  '". $epcdate ."', ". $conditionsurvey .", '". $conditionsurveynotes ."', '". $retrofitadvisorfeedback .
+                  "', '". $tenure ."', '". $propertyType ."', '". $propertyStyle ."', '". $propertyposition . 
+                  "', '". $propertyDate ."', '". $storeys ."', '". $numBedrooms ."', '". $bedroomOccupancy ."', '". $orientation .
+                  "', '". $dateadded . "')";
+      } 
+
       #echo "<br>";   
       #print_r($_POST);
       #echo "<br>";         
@@ -86,7 +105,7 @@
       #print_r($sql);
       #echo "<br>";  
       #echo "<br>";         
-      
+
       if (mysqli_query( $dbc , $sql )) {
          echo "Record updated successfully";
          sleep(1);
@@ -301,10 +320,10 @@ function buildAllTables($dbc, $newsurveyid, $propertyid) {
 
    <body>
 
-      <!--Navigation bar-->
+      <!--Navigation bar
       <div id="nav-placeholder">
 
-      </div>
+      </div>-->
       <!--end of Navigation bar-->
 
       <!-- Page content -->
@@ -313,7 +332,9 @@ function buildAllTables($dbc, $newsurveyid, $propertyid) {
          <table class="" style="border: 0">
             <tr>
                <th>Inspection Date</th>
-               <td><input type="date" name="inspectiondate" value="" ></td>
+               <td>
+                  <input type="date" name="inspectiondate" value="" >
+               </td>
             </tr>
             <tr>
                <th>Surveyor</th>
@@ -324,98 +345,108 @@ function buildAllTables($dbc, $newsurveyid, $propertyid) {
             <tr>
                <th>Flood Risk</th>
                <td>
-                  <select id="floodrisk" name="floodrisk" size=1 style="width: 160px;">
+                  <select id="floodrisk" name="floodrisk" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"        >None</option>
                      <option value="Flood Zone 1">Flood Zone 1</option>
                      <option value="Flood Zone 2">Flood Zone 2</option>
                      <option value="Flood Zone 3">Flood Zone 3</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="floodrisk_tt"  >
-                  <span class="tooltiptext" style="width: 450px;margin-left=0px;padding-left=0px;">
-NRW, Environment Agency, SEPA or DfI.<br>
-Flood Zone 1: 0.1% risk<br>
-Flood Zone 2: 0.1 - 1% risk river, 0.1 - 0.5% risk sea<br>
-Flood Zone 3: >1% risk river, >0.5% risk sea
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="floodrisk_tt"  >
+                     <span class="tooltiptext" >
+                           NRW, Environment Agency, SEPA or DfI. <br>
+                           Flood Zone 1: 0.1% risks   <br>
+                           Flood Zone 2: 0.1 - 1% risk river, 0.1 - 0.5% risk sea <br>
+                           Flood Zone 3: >1% risk river, >0.5% risk sea
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Exposure Rating</th>
                <td>
-                  <select id="exposureRating" name="exposurerating" size="1" style="width: 160px;">
+                  <select id="exposureRating" name="exposurerating" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Sheltered"  >Sheltered</option>
                      <option value="Moderate"   >Moderate</option>
                      <option value="Severe"     >Severe</option>
                      <option value="Very Severe">Very Severe</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="exposureRating_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  CATEGORIES OF EXPOSURE TO WIND DRIVEN RAIN from NHBC or BRE
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="exposureRating_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     CATEGORIES OF EXPOSURE TO WIND DRIVEN RAIN from NHBC or BRE
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Party Wall Issue</th>
                <td>
-                  <input type="checkbox" id="partywallissueChk" onchange="showPartyWallNotes()" name="partywallissue" >
-               </td>
-               <th id="partywallnotesHdr" > &nbsp; &nbsp; PartyWallNotes</th>
-               <td>
-                  <input type="text" id="partywallnotesSel" name="partywallnotes" >
+                  <input type="checkbox" class="chk" id="partywallissueChk" onchange="showPartyWallNotes()" name="partywallissue" >
                </td>
             </tr>
+         </table>
+         <div class="query">
+            <label for="partywallnotesSel" id="partywallnotesHdr">Party Wall Notes &nbsp;</label>
+            <span>
+               <input type="text" id="partywallnotesSel" name="partywallnotes" value="">
+            </span>
+         </div>
+         <table>
             <tr>
                <th>Right to Light Issue</th>
                <td>
-                  <input type="checkbox" id="righttolightChk" onchange="showRightToLightNotes()" name="righttolight" >
-               </td>
-               <th id="righttolightHdr" > &nbsp; &nbsp; Right to Light Notes</th>
-               <td>
-                  <input type="text" id="righttolightSel" name="righttolightnotes" >
+                  <input type="checkbox" class="chk" id="righttolightChk" onchange="showRightToLightNotes()" name="righttolight" >
                </td>
             </tr>
+         </table>
+         <div class="query">
+            <label for="righttolightSel" id="righttolightHdr">Rt to Light Notes &nbsp;</label>
+            <span>
+               <input type="text" id="righttolightSel" name="righttolightnotes" value="">
+            </span>
+         </div>
+         <table>
             <tr>
                <th>Existing EPC</th>
                <td>
-                  <input type="checkbox" id="existingepcChk" onchange="showEPCdate()" name="existingepc" >
-               </td>
-               <td>
-               <div class="tooltip" id="retrofitadvisorfeedback_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  Check EPC Register 
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
-               </td>
-               <th id="existingepcHdr" > &nbsp; &nbsp; EPC Date </th>
-               <td>
-                  <input type="date" id="existingepcSel" name="existingepcdate" >
+                  <input type="checkbox" class="chk" id="existingepcChk" onchange="showEPCdate()" name="existingepc" >
+                  <div class="tooltip" id="retrofitadvisorfeedback_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     Check EPC Register 
+                     </span>
+                     <p style="text-align : right;font-size : 14;"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
+         </table>
+         <div class="query">
+            <label for="existingepcSel" id="existingepcHdr">EPC Date &nbsp;</label>
+            <span>
+               <input type="datetime" id="existingepcSel" name="existingepcdate" value="">
+            </span>
+         </div>
+         <table>
             <tr>
                <th>Condition Survey Available</th>
                <td>
-                  <input type="checkbox" id="conditionsurveyChk" onchange="showConditionSurveyNotes()" name="conditionsurvey" >
-               </td>
-               <th id="conditionsurveyHdr" > &nbsp; &nbsp; Condition Survey Notes</th>
-               <td>
-                  <input type="text" id="conditionsurveySel" name="conditionsurveynotes" >
+                  <input type="checkbox" class="chk" id="conditionsurveyChk" onchange="showConditionSurveyNotes()" name="conditionsurvey" >
                </td>
             </tr>
+         </table>
+         <div class="query">
+            <label for="conditionsurveySel" id="conditionsurveyHdr">Cond Survey Notes &nbsp;</label>
+            <span>
+               <input type="text" id="conditionsurveySel" name="conditionsurveynotes" value="">
+            </span>
+         </div>
+         <table>
             <tr>
                <th>Retrofit Advisor feedback</th>
                <td>
-                  <select id="retrofitadvisorfeedback" name="retrofitadvisorfeedback" size=1 style="width: 160px;">
+                  <select id="retrofitadvisorfeedback" name="retrofitadvisorfeedback" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Energy Reduction"    >Energy Reduction</option>
                      <option value="Cost Reduction"      >Cost Reduction</option>
@@ -424,42 +455,38 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
                      <option value="Mould solution"      >Mould solution</option>
                      <option value="Comfort improvemment">Comfort improvemment</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="retrofitadvisorfeedback_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This provides context including any EEM requirements (eg. MEES)
-                  and opportunities for owner with regard towards incentives.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="retrofitadvisorfeedback_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This provides context including any EEM requirements (eg. MEES)
+                     and opportunities for owner with regard towards incentives.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Tenure</th>
                <td>
-                  <select id="tenure" name="tenure" size=1 style="width: 160px;">
+                  <select id="tenure" name="tenure" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Owner Occupier"           >Owner Occupier</option>
                      <option value="Rented (Social)"          >Rented (Social)</option>
                      <option value="Rented (Private)"         >Rented (Private)</option>
                      <option value="Joint Property Ownership" >Joint Property Ownership</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="tenure_tt"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This provides context including any EEM requirements (eg. MEES)
-                  and opportunities for owner with regard towards incentives.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="tenure_tt"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This provides context including any EEM requirements (eg. MEES)
+                     and opportunities for owner with regard towards incentives.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Property Type</th>
                <td>
-                  <select id="propertyTypeSlct" onchange="showPropertyPosition()" name="propertyType" size=1 style="width: 160px;">
+                  <select id="propertyTypeSlct" onchange="showPropertyPosition()" name="propertyType" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="House"     >House</option>
                      <option value="Flat"      >Flat</option>
@@ -468,21 +495,25 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
                      <option value="Park Home" >Park Home</option>
                   </select>
                </td>
-               <th id="propertypositionhdr">Property Position</th>
-               <td>
-                  <select id="propertypositionsel" name="propertyposition" size=1 style="width: 160px;">
-                     <option value="" disabled selected>Please choose...</option>
-                     <option value="Basement"    >Basement</option>
-                     <option value="Ground Floor">Ground Floor</option>
-                     <option value="Mid Floor"   >Mid Floor</option>
-                     <option value="Top Floor"   >Top Floor</option>
-                  </select>
-               </td>
-            </tr> 
+            </tr>
+         </table>
+         <div class="query">
+            <label for="propertypositionsel" id="propertypositionhdr">Position</label>
+            <span>
+               <select id="propertypositionsel" name="propertyposition" size=1 >
+                  <option value="" disabled selected>Please choose...</option>
+                  <option value="Basement"    >Basement</option>
+                  <option value="Ground Floor">Ground Floor</option>
+                  <option value="Mid Floor"   >Mid Floor</option>
+                  <option value="Top Floor"   >Top Floor</option>
+               </select>
+            </span>
+         </div>
+         <table>
             <tr>
                <th>Property Style</th>
                <td>
-                  <select id="propertyStyle" name="propertyStyle" size=1 style="width: 160px;">
+                  <select id="propertyStyle" name="propertyStyle" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Detached"     >Detached</option>
                      <option value="Semi-Detached">Semi-Detached</option>
@@ -496,7 +527,7 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
             <tr>
                <th>Property Date</th>
                <td>
-                  <select id="propertyDate" name="propertyDate" size=1 style="width: 160px;">
+                  <select id="propertyDate" name="propertyDate" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Pre 1919" >Pre 1919</option>
                      <option value="1920-1945">1920-1945</option>
@@ -510,22 +541,20 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
                      <option value="2014-2020">2014-2020</option>
                      <option value="2020-onwards">2020-onwards</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="property_date"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This gives an indication of relevant building regulations 
-                  in force at the time of construction and of associated 
-                  U values of the property.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="property_date"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This gives an indication of relevant building regulations 
+                     in force at the time of construction and of associated 
+                     U values of the property.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Storeys</th>
                <td>
-                  <select id="storeys" name="storeys" size=1 style="width: 160px;">
+                  <select id="storeys" name="storeys" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="1">1</option>
                      <option value="2">2</option>
@@ -533,21 +562,19 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
                      <option value="4">4</option>
                      <option value="More than 4">More than 4</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="numstoreys"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This refers to the number of storeys within the property 
-                  rather than the storey that a flat might be located on.
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="numstoreys"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This refers to the number of storeys within the property 
+                     rather than the storey that a flat might be located on.
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr> 
             <tr>
                <th>Number of Bedrooms</th>
                <td>
-                  <select id="numBedrooms" name="numBedrooms" size=1 style="width: 160px;">
+                  <select id="numBedrooms" name="numBedrooms" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="1">1</option>
                      <option value="2">2</option>
@@ -561,28 +588,26 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
             <tr>
                <th>Bedroom Occupancy</th>
                <td>
-                  <select id="bedroomOccupancy" name="bedroomOccupancy" size=1 style="width: 160px;">
+                  <select id="bedroomOccupancy" name="bedroomOccupancy" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Less than 1">Less than 1</option>
                      <option value="1"          >1</option>
                      <option value="More than 1">More than 1</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="bedroomOccupancy"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  This provides an indication of usage patterns and associated
-                  issues of humidity, IAQ and energy use in the house. Divide 
-                  the number of occupants by the number of bedrooms to give 
-                  occupancy rate.</span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="bedroomOccupancy"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     This provides an indication of usage patterns and associated
+                     issues of humidity, IAQ and energy use in the house. Divide 
+                     the number of occupants by the number of bedrooms to give 
+                     occupancy rate.</span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
                <th>Orientation</th>
                <td>
-                  <select id="orientation" name="orientation" size=1 style="width: 160px;">
+                  <select id="orientation" name="orientation" size=1 >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="North"     >North</option>
                      <option value="North East">North East</option>
@@ -593,32 +618,28 @@ Flood Zone 3: >1% risk river, >0.5% risk sea
                      <option value="West"      >West</option>
                      <option value="North West">North West</option>
                   </select>
-               </td>
-               <td>
-               <div class="tooltip" id="bedroomOccupancy"  >
-                  <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
-                  To give an indication of options for renewable energy and 
-                  to identify risks via wind driven rain & solar irradiation
-                  (cf. reverse condensation). 
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="bedroomOccupancy"  >
+                     <span class="tooltiptext" ><!--style="top: 18px;left: 600px"> -->
+                     To give an indication of options for renewable energy and 
+                     to identify risks via wind driven rain & solar irradiation
+                     (cf. reverse condensation). 
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>               
          </table>
-      <br>         
-      <br>         
-      <br>         
-      <br> 
-      <div id="pagefooter" >
-         <a href="getchoice.php" title="Home">Home</a>
-         <input type="submit" value="Save" name="submit">
-         <a href="form12.php" title="Form 12" >Next</a>		
-      </div>
+         <br>         
+         <br>         
+         <div id="pagefooter" >
+            <a href="getchoice.php" title="Home">Home</a>
+            <input type="submit" value="Save" name="submit">
+            <a href="form12.php" title="Form 12" >Next</a>		
+            <br><br><small>&copy; <em>STBA 2020</em></small>
+         </div>
       </form>  
       </div> 
    <footer>
-   
    </footer>
    </body>
 </html>

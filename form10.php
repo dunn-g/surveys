@@ -345,12 +345,12 @@ function clean_input($data) {
                </td>
             </tr>
          </table>
-            <div class="query">
-               <label for="partywallnotesSel" id="partywallnotesHdr">Party Wall Notes &nbsp;</label>
-               <span>
-                  <input type="text" id="partywallnotesSel" name="partywallnotes" value="<?php echo $row['PartyWallNotes']?>">
-               </span>
-            </div>
+         <div class="query">
+            <label for="partywallnotesSel" id="partywallnotesHdr">Party Wall Notes &nbsp;</label>
+            <span>
+               <input type="text" id="partywallnotesSel" name="partywallnotes" value="<?php echo $row['PartyWallNotes']?>">
+            </span>
+         </div>
          <table>
             <tr>
                <th>Right to Light Issue</th>
@@ -359,12 +359,12 @@ function clean_input($data) {
                </td>
             </tr>
          </table>
-            <div class="query">
-               <label for="righttolightSel" id="righttolightHdr">Rt to Light Notes &nbsp;</label>
-               <span>
-                  <input type="text" id="righttolightSel" name="righttolightnotes" value="<?php echo $row['RightToLightNotes']?>">
-               </span>
-            </div>
+         <div class="query">
+            <label for="righttolightSel" id="righttolightHdr">Rt to Light Notes &nbsp;</label>
+            <span>
+               <input type="text" id="righttolightSel" name="righttolightnotes" value="<?php echo $row['RightToLightNotes']?>">
+            </span>
+         </div>
          <table>
             <tr>
                <th>Existing EPC</th>
@@ -379,12 +379,12 @@ function clean_input($data) {
                </td>
             </tr>
          </table>
-            <div class="query">
-               <label for="existingepcSel" id="existingepcHdr">EPC Date &nbsp;</label>
-               <span>
-                  <input type="datetime" id="existingepcSel" name="existingepcdate" value="<?php echo $tempEPCDate?>">
-               </span>
-            </div>
+         <div class="query">
+            <label for="existingepcSel" id="existingepcHdr">EPC Date &nbsp;</label>
+            <span>
+               <input type="datetime" id="existingepcSel" name="existingepcdate" value="<?php echo $tempEPCDate?>">
+            </span>
+         </div>
          <table>
             <tr>
                <th>Condition Survey Available</th>
@@ -393,12 +393,12 @@ function clean_input($data) {
                </td>
             </tr>
          </table>
-            <div class="query">
-               <label for="conditionsurveySel" id="conditionsurveyHdr">Cond Survey Notes &nbsp;</label>
-               <span>
-                  <input type="text" id="conditionsurveySel" name="conditionsurveynotes" value="<?php echo $row['ConditionSurveyNotes']?>">
-               </span>
-            </div>
+         <div class="query">
+            <label for="conditionsurveySel" id="conditionsurveyHdr">Cond Survey Notes &nbsp;</label>
+            <span>
+               <input type="text" id="conditionsurveySel" name="conditionsurveynotes" value="<?php echo $row['ConditionSurveyNotes']?>">
+            </span>
+         </div>
          <table>
             <tr>
                <th>Retrofit Advisor feedback</th>
@@ -454,18 +454,18 @@ function clean_input($data) {
                </td>
             </tr>
          </table>
-            <div class="query">
-               <label for="propertypositionsel" id="propertypositionhdr">Position</label>
-               <span>
-                  <select id="propertypositionsel" name="propertyposition" size=1 >
-                     <option value="" disabled selected>Please choose...</option>
-                     <option value="Basement"    <?php echo $row['PropertyPosition'] == "Basement"     ? " selected" : ""; ?>>Basement</option>
-                     <option value="Ground Floor"<?php echo $row['PropertyPosition'] == "Ground Floor" ? " selected" : ""; ?>>Ground Floor</option>
-                     <option value="Mid Floor"   <?php echo $row['PropertyPosition'] == "Mid Floor"    ? " selected" : ""; ?>>Mid Floor</option>
-                     <option value="Top Floor"   <?php echo $row['PropertyPosition'] == "Top Floor"    ? " selected" : ""; ?>>Top Floor</option>
-                  </select>
-               </span>
-            </div>
+         <div class="query">
+            <label for="propertypositionsel" id="propertypositionhdr">Position</label>
+            <span>
+               <select id="propertypositionsel" name="propertyposition" size=1 >
+                  <option value="" disabled selected>Please choose...</option>
+                  <option value="Basement"    <?php echo $row['PropertyPosition'] == "Basement"     ? " selected" : ""; ?>>Basement</option>
+                  <option value="Ground Floor"<?php echo $row['PropertyPosition'] == "Ground Floor" ? " selected" : ""; ?>>Ground Floor</option>
+                  <option value="Mid Floor"   <?php echo $row['PropertyPosition'] == "Mid Floor"    ? " selected" : ""; ?>>Mid Floor</option>
+                  <option value="Top Floor"   <?php echo $row['PropertyPosition'] == "Top Floor"    ? " selected" : ""; ?>>Top Floor</option>
+               </select>
+            </span>
+         </div>
          <table>
             <tr>
                <th>Property Style</th>
@@ -498,8 +498,6 @@ function clean_input($data) {
                      <option value="2014-2020"<?php echo $row['MainPropertyDate'] == "2014-2020" ? " selected" : ""; ?>>2014-2020</option>
                      <option value="2020-onwards"<?php echo $row['MainPropertyDate'] == "2020-onwards" ? " selected" : ""; ?>>2020-onwards</option>
                   </select>
-<!--               </td>
-               <td>-->
                <div class="tooltip" id="property_date_tt"  >
                   <span class="tooltiptext" >
                   This gives an indication of relevant building regulations 
@@ -521,8 +519,6 @@ function clean_input($data) {
                      <option value="4"<?php echo $row['Storeys'] == "4" ? " selected" : ""; ?>>4</option>
                      <option value="More than 4"<?php echo $row['Storeys'] == "More than 4" ? " selected" : ""; ?>>More than 4</option>
                   </select>
-<!--               </td>
-               <td>-->
                <div class="tooltip" id="numstoreys_tt">
                   <span class="tooltiptext" >
                   This refers to the number of storeys within the property 
@@ -555,16 +551,14 @@ function clean_input($data) {
                      <option value="1"          <?php echo $row['BedroomOccupancy'] == "1" ? " selected" : ""; ?>          >1</option>
                      <option value="More than 1"<?php echo $row['BedroomOccupancy'] == "More than 1" ? " selected" : ""; ?>>More than 1</option>
                   </select>
-<!--               </td>
-               <td>-->
-               <div class="tooltip" id="bedroomOccupancy_tt"  >
-                  <span class="tooltiptext" >
-                  This provides an indication of usage patterns and associated
-                  issues of humidity, IAQ and energy use in the house. Divide 
-                  the number of occupants by the number of bedrooms to give 
-                  occupancy rate.</span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="bedroomOccupancy_tt"  >
+                     <span class="tooltiptext" >
+                     This provides an indication of usage patterns and associated
+                     issues of humidity, IAQ and energy use in the house. Divide 
+                     the number of occupants by the number of bedrooms to give 
+                     occupancy rate.</span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>
             <tr>
@@ -581,16 +575,14 @@ function clean_input($data) {
                      <option value="West"      <?php echo $row['OrientationMainFrontElevation'] == "West" ? " selected" : ""; ?>      >West</option>
                      <option value="North West"<?php echo $row['OrientationMainFrontElevation'] == "North West" ? " selected" : ""; ?>>North West</option>
                   </select>
-<!--               </td>
-               <td>-->
-               <div class="tooltip" id="orientation_tt"  >
-                  <span class="tooltiptext" >
-                  To give an indication of options for renewable energy and 
-                  to identify risks via wind driven rain & solar irradiation
-                  (cf. reverse condensation). 
-                  </span>
-                  <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
-               </div>
+                  <div class="tooltip" id="orientation_tt"  >
+                     <span class="tooltiptext" >
+                     To give an indication of options for renewable energy and 
+                     to identify risks via wind driven rain & solar irradiation
+                     (cf. reverse condensation). 
+                     </span>
+                     <p style="font-size : 14"> &nbsp; &nbsp; &#8505 </p>
+                  </div>
                </td>
             </tr>               
          </table>

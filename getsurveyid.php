@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head><meta charset="UTF-8">
-      <title>Get Survey</title>
-      <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
-      <style>
-         th, td {
-            white-space: nowrap;
-         }
-      </style>
-   </head>
-   <body>
 <?php # CONNECT TO MySQL DATABASE.
 
 session_start();
@@ -36,11 +24,22 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
          WHERE 1' ;
   $r = mysqli_query( $dbc , $q ) ;
    #print_r($r);
-      echo '<h1>Survey / Property Link</h1>' ;
 
    if ( $r )
-   {
-      echo '<table><tr><th>SurveyId</th><th>UPRN</th><th>Address</th></tr>';
+   { echo '<!DOCTYPE html>
+      <html lang="en">
+         <head><meta charset="UTF-8">
+            <title>Get Survey</title>
+            <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
+            <style>
+               th, td {
+                  white-space: nowrap;
+               }
+            </style>
+         </head>
+         <body>
+            <h1>Survey / Property Link</h1>
+            <table><tr><th>SurveyId</th><th>UPRN</th><th>Address</th></tr>';
       $i = 0;
       while ( $row = mysqli_fetch_array( $r , MYSQLI_ASSOC ) ) 
       {
@@ -50,25 +49,25 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
          echo '<tr><td>' . $row['SurveyId'] . ' </td><td>' . $row['UPRN'] . ' </td><td> ' . $row[ 'AddressLookUp' ] . '</td></tr>' ;
          $i++;
       }
-  echo '</table>' ;
-
-   } else { echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; }
-   echo "<br>";
-
-  echo '
-      <form name="get_survey" method="POST" action="" >
-
-         Survey Id <input type="text" name="surveyid" autofocus>
-         <input type="submit" value="submit" name="submit"> 
-
-      </form> ';   
+  echo '    </table>
+            <br>
+            <form name="get_survey" method="POST" action="" >
+               Survey Id <input type="text" name="surveyid" autofocus>
+               <input type="submit" value="submit" name="submit"> 
+               <a href="getchoice.php">Home</a>
+            </form>
+         </body>
+      </html>';
+   } 
+   else 
+   { 
+      echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; 
+   }
 
 }
 else
 {
   # Handle the form submission.
-  # Empty check.
-
    if ( !empty ( $_POST['surveyid'] ) )
    {
      $surveyselected = $_POST['surveyid'];
@@ -79,47 +78,24 @@ else
    
       if ( $r2 )
       {
-         echo '<table><tr><th>Survey</th><th>UPRN</th><th>Address</th></tr>';
+         $row = mysqli_fetch_array( $r2 , MYSQLI_ASSOC );
 
-         while ( $row = mysqli_fetch_array( $r2 , MYSQLI_ASSOC ) ) 
-         {
-            echo '<tr><td>' . $row['SurveyId'] . ' </td><td>' . $row['UPRN'] . ' </td><td> ' . $row[ 'AddressLookUp' ] . '</td></tr>' ;
-            $subSurvey  = $row['SurveyId'];
-            $subuprn    = $row['UPRN'];
-            $subAddress = $row['AddressLookUp'];
-         }
-         echo '</table>' ;
-         
-         #echo $subSurvey . "  " . $subAddress;
-         echo '<br>
-         
-         <input type="hidden" name="survey"  value=" ' . $subSurvey . ' ">
-         <input type="hidden" name="uprn"    value=" ' . $subuprn . ' " >
-         <input type="hidden" name="address" value=" ' . $subAddress . ' " >
-         <br>';
-          
-         #print_r($_SESSION);
-    
          if (isset($_POST['submit'])) {
-               $_SESSION['survey']  = $subSurvey;
-               $_SESSION['uprn']    = $subuprn;
-               $_SESSION['address'] = $subAddress;
+               $_SESSION['survey']  = $row['SurveyId'];
+               $_SESSION['uprn']    = $row['UPRN'];
+               $_SESSION['address'] = $row['AddressLookUp'];
                #print_r($_SESSION);
                sleep(1);
                header( 'Location: form10.php' ) ; 
                exit() ;
          };
-
       }
    }
   else
   { 
+  # Empty check.
     $surveyid = NULL ;
     echo 'You must enter a survey id' ;
   }
 }
 ?>
-
-          
-   </body>
-</html>

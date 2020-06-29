@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head><meta charset="UTF-8">
-      <title>Get Client</title>
-      <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
-   </head>
-   <body>
 <?php # CONNECT TO MySQL DATABASE.
 
 session_start();
@@ -28,70 +21,81 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
 
    #$row = mysqli_fetch_array( $rslt , MYSQLI_ASSOC );
 
-   echo '<h1>Select Client To Edit</h1>' ;
 
    if ( $rslt )
    {
-      echo '<table><tr><th>Client</th><th>Name</th></tr>';
+   echo '<!DOCTYPE html>
+   <html lang="en">
+      <head><meta charset="UTF-8">
+         <title>Get Client</title>
+         <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
+      </head>
+      <style>
+         table {
+         width:60%;
+         text-align: left;
+         vertical-align:top;
+         table-layout:fixed;
+
+         }
+
+         th {
+            width:25%;
+            white-space:nowrap;
+            text-align: left;
+            vertical-align:top;
+         }
+         td {
+            text-align: left;
+            vertical-align:top;
+         }
+
+      </style>
+      <body>
+         <h1>Select Client To Edit</h1>
+         <br>
+         <table><tr><th>Client</th><th>Name</th></tr>';
 
       while ( $row = mysqli_fetch_array( $rslt , MYSQLI_ASSOC ) ) 
       {
          echo '<tr><td>' . $row['ClientId'] . ' </td><td>' . $row['ClientName'] . ' </td></tr>' ;
       }
-  echo '</table>' ;
+  echo ' </table>
+         <br>
+         <form name="clienttoedit" method="POST" action="" >
 
-   } else { echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; }
-   echo "<br>";
+            Client Id <input type="text" name="clientid" autofocus><br><br>
+            <input type="submit" value="submit" name="submit"> 
+            <a href="getchoice.php">Home</a>
 
-  echo '
-      <form name="clienttoedit" method="POST" action="" >
+         </form> 
+      </body>
+   </html>';   
 
-         Enter client required <input type="text" name="clientid">
-         <input type="submit" value="submit" name="submit"> 
-
-      </form> ';   
+   } 
+   else { 
+      echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; 
+   }
 }
-else
-{
+else {
   # Handle the form submission.
   # Empty check.
 
    if ( !empty ( $_POST['clientid'] ) )
    {
      $clientselected = $_POST['clientid'];
-/*      $sql2 = 'SELECT distinct c.clientid, c.ClientName, c.Contact FROM aaclients c
+     $sql2 = 'SELECT distinct c.clientid, c.ClientName, c.Contact FROM aaclients c
             WHERE c.ClientId = ' . $clientselected ;
      $rslt2 = mysqli_query( $dbc , $sql2 ) ;
- */print_r($_POST['clientid']);
-echo '<br>';   
-print_r($clientselected);
-echo '<br>';
-/*print_r($sql2);
-echo '<br>';
-print_r($rslt2);
-echo '<br>';
-      if ( $rslt2 )
-      {
-          echo '<table><tr><th>Client</th><th>Contact</th><th>Address</th></tr>';
 
-         while ( $row = mysqli_fetch_array( $rslt2 , MYSQLI_ASSOC ) ) 
-         {
-            echo '<tr><td>' . $row['ClientId'] . ' </td><td>' . $row['ClientName'] . ' </td><td> ' . $row[ 'Address' ] . '</td></tr>' ;
-         }
-         echo '</table>' ;
-         
-         echo '<br>';
- */         
-         if (isset($_POST['submit'])) {
-               $_SESSION['clientid']  = $clientselected;
-               print_r($_SESSION);
-               header( 'Location: ClientEdit.php' ) ; 
-               exit() ;
-         };
-     # }
+      if (isset($_POST['submit'])) {
+            $_SESSION['clientid']  = $clientselected;
+            #print_r($_SESSION);
+            header( 'Location: ClientEdit.php' ) ; 
+            exit() ;
+      };
    }
-  else
-  { 
+   else { 
     $clientid = NULL ;
     echo 'You must enter a client id' ;
   }
@@ -100,6 +104,3 @@ echo '<br>';
    mysqli_close( $dbc ) ;
 }
 ?>
-          
-   </body>
-</html>

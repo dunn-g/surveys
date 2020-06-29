@@ -1,5 +1,7 @@
 <?php # PROCESS LOGIN ATTEMPT.
 
+session_start();
+
 # Check form submitted.
 if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 {
@@ -12,12 +14,12 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' )
 
    # Check login.
    list ( $check, $data ) = validate ( $dbc, $_POST[ 'email' ], $_POST[ 'pass' ] ) ;
-   #print_r($data); sleep(5);
+   #print_r($check);
+   print_r($data); sleep(5);
    # On success set session data and display logged in page.
    if ( $check )  
    {
     # Access session.
-    session_start();
     $_SESSION[ 'SurveyorId' ]        = $data[ 'SurveyorId' ] ;
     $_SESSION[ 'SurveyorFirstName' ] = $data[ 'SurveyorFirstName' ] ;
     $_SESSION[ 'SurveyorLastName' ]  = $data[ 'SurveyorLastName' ] ;

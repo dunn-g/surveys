@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head><meta charset="UTF-8">
-      <title>Get Property Survey</title>
-      <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
-      <style>
-         th {
-            white-space: nowrap;
-         }
-         td {
-            white-space: nowrap;
-         }
-      </style>
-   </head>
-   <body>
 <?php # CONNECT TO MySQL DATABASE.
 
 session_start();
@@ -37,11 +22,26 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
                                     FROM aapropertysurveylink psl  ) ' ;
   $rslt = mysqli_query( $dbc , $sql ) ;
 
-   echo '<h1>Select Property for New Survey</h1>' ;
-      echo '<table><tr><th>Property</th><th>UPRN</th><th>Address</th></tr>';
 
    if ( $rslt )
    {
+echo '<!DOCTYPE html>
+<html lang="en">
+	<head><meta charset="UTF-8">
+      <title>Get Property Survey</title>
+      <link rel="stylesheet" href="Survey_StyleSheet.css" type="text/css"/>
+      <style>
+         th {
+            white-space: nowrap;
+         }
+         td {
+            white-space: nowrap;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>Select Property for New Survey('.$_SESSION[ 'SurveyorId'].')</h1>
+      <table><tr><th>Property</th><th>UPRN</th><th>Address</th></tr>';
 
       while ( $row = mysqli_fetch_array( $rslt , MYSQLI_ASSOC ) ) 
       {
@@ -50,18 +50,22 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
          $Address[]      = $row['AddressLookUp' ] ;
          echo '<tr><td>' . $row['PropertyId'] . ' </td><td>' . $row['UPRN'] . ' </td><td> ' . $row[ 'AddressLookUp' ] . '</td></tr>' ;
       }
-  echo '</table>' ;
-
-   } else { echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; }
-   echo "<br>";
-
-  echo '
+   echo '</table>
+   
+      <br>
       <form name="PropertyEdit" method="POST" action="" >
 
          Enter Property Id <input type="text" name="propertyid">
          <input type="submit" value="submit" name="submit"> 
 
-      </form> ';   
+      </form>    
+   </body>
+</html>';
+
+   } 
+   else { 
+      echo '<p>' . mysqli_error( $dbc ) . '</p>'  ; 
+   }
 }
 else
 {
@@ -77,34 +81,18 @@ else
    
       if ( $r2 )
       {
-         echo '<table><tr><th>Property</th><th>UPRN</th><th>Address</th></tr>';
 
-         while ( $row = mysqli_fetch_array( $r2 , MYSQLI_ASSOC ) ) 
-         {
-            echo '<tr><td>' . $row['PropertyId'] . ' </td><td>' . $row['UPRN'] . ' </td><td> ' . $row[ 'AddressLookUp' ] . '</td></tr>' ;
-            $subProperty  = $row['PropertyId'];
-            $subuprn    = $row['UPRN'];
-            $subAddress = $row['AddressLookUp'];
-         }
-         echo '</table>' ;
-         
-         #echo $subProperty . "  " . $subAddress;
-         echo '<br>
-         
-         <input type="hidden" name="property"  value=" ' . $subProperty . ' ">
-         <input type="hidden" name="uprn"    value=" ' . $subuprn . ' " >
-         <input type="hidden" name="address" value=" ' . $subAddress . ' " >
-         <br>';
-          
+         $row = mysqli_fetch_array( $r2 , MYSQLI_ASSOC );
+
          if (isset($_POST['submit'])) {
-               $_SESSION['property']  = $subProperty;
-               $_SESSION['uprn']    = $subuprn;
-               $_SESSION['address'] = $subAddress;
-               print_r($_SESSION);
+               $_SESSION['property'] = $row[PropertyId];
+               $_SESSION['uprn']     = $row[UPRN];
+               $_SESSION['address']  = $row[AddressLookUp];
+
                if ($_SESSION[ 'SurveyorId' ] == 10 ){
-                  header( 'Location: CreateNewForm10LOCAL.php' ) ; 
+                  header( 'location:CreateNewForm10LOCAL.php' ) ; 
                } else {
-                  header( 'Location: CreateNewForm10.php' ) ; 
+                  header( 'location:CreateNewForm10.php' ) ; 
                }      
                exit() ;
          };
@@ -120,6 +108,3 @@ else
 }
 
 ?>
-          
-   </body>
-</html>

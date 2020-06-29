@@ -48,9 +48,9 @@ function validate( $dbc, $email = '', $pwd = '')
       $hashed_passwd = $row['passwd'] ;
       if (password_verify($p, $hashed_passwd ))
       {  
-         echo 'true';
+         #echo 'true';
          return array( true, $row ) ; 
-      } else {echo 'false';}
+      } #else {echo 'false';}
     }
     # Or on failure set error message.
     else { $errors[] = 'Email address and password not found.' ; }

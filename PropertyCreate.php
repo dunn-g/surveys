@@ -6,7 +6,8 @@
 
    if ($_SESSION[ 'SurveyorId' ] == 10 ){
       require( '../connectlaptop_db.php' ) ;
-   } else {
+   } 
+   else {
       require( '../connect_db.php' );
    }      
 
@@ -18,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    if (empty($_POST["uprn"])) {
       $uprnErr = "UPRN is required";
-   } else {
+   } 
+   else {
       $uprn = clean_input($_POST['uprn']);
    }
    
@@ -26,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    if (empty($_POST["addressline1"])) {
       $streetErr = "Street is required";
-   } else {      
+   } 
+   else {      
       $addressline1 = clean_input($_POST['addressline1']);
    }
    
@@ -34,13 +37,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    if (empty($_POST["town"])) {
       $townErr = "Town is required";
-   } else {      
+   } 
+   else {      
       $town = clean_input($_POST['town']);
    }
    
    if (empty($_POST["town"])) {
       $postcodeErr = "Postcode is required";
-   } else {      
+   } 
+   else {      
       $postcode = clean_input($_POST['postcode']);
    }
    
@@ -60,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (mysqli_query( $dbc , $sql )) {
          echo "New record created successfully";
          sleep(1);
-      }  else {
+      }  
+      else {
          echo "Error: " . $sql . "<br>" . mysqli_error($dbc);
       }
 

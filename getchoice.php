@@ -1,8 +1,9 @@
-
 <?php
-// start session
+
+#start session
 session_start();
-// register session variables
+
+#register session variables
 if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' ) 
 {
    # Display the form.
@@ -89,7 +90,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' )
             <br>
             <li>Survey: &nbsp;&nbsp;&nbsp;<a href="getPropertyIdForNewSurvey.php" name="createsurvey" title="Add New Survey">Add New Survey</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="getsurveyid.php" name="editsurvey" title="Amend Existing Survey Details">Amend Existing Survey Details</a></li>
             <br>
-            <li>Surveyor: <a href="surveyorCreate.php" name="createsurveyor" title="Add New Surveyor">Add New Surveyor</a> &nbsp; <a href="surveyorAmend.php" name="editsurveyor" title="Amend Surveyor Details">Amend Existing Surveyor Details</a></li>
+            <li>Surveyor: <a href="surveyorRegister.php" name="createsurveyor" title="Add New Surveyor">Add New Surveyor</a> &nbsp; <a href="surveyorAmend.php" name="editsurveyor" title="Amend Surveyor Details">Amend Existing Surveyor Details</a></li>
             <br>      
             <li>Client: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ClientCreate.php" name="createclient" title="Add New Client">Add New Client</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="getclientid.php" name="editclient" title="Amend Existing Client Details">Amend Existing Client Details</a></li>	
             <br>
