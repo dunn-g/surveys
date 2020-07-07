@@ -55,7 +55,7 @@ echo '<!DOCTYPE html>
       <br>
       <form name="PropertyEdit" method="POST" action="" >
 
-         Enter Property Id <input type="text" name="propertyid">
+         Enter Property Id <input type="text" name="propertyid" autofocus>
          <input type="submit" value="submit" name="submit"> 
 
       </form>    
@@ -85,9 +85,9 @@ else
          $row = mysqli_fetch_array( $r2 , MYSQLI_ASSOC );
 
          if (isset($_POST['submit'])) {
-               $_SESSION['property'] = $row[PropertyId];
-               $_SESSION['uprn']     = $row[UPRN];
-               $_SESSION['address']  = $row[AddressLookUp];
+               $_SESSION['property'] = $row['PropertyId'];
+               $_SESSION['uprn']     = $row['UPRN'];
+               $_SESSION['address']  = $row['AddressLookUp'];
 
                if ($_SESSION[ 'SurveyorId' ] == 10 ){
                   header( 'location:CreateNewForm10LOCAL.php' ) ; 

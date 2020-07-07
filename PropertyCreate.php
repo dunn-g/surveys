@@ -13,12 +13,14 @@
 
 $uprn = $streetnumber = $addressline1 = $addressline2 = $town =  '';
 $postcode = $propertyname = $owner = $addresslookup = $message = '';
-$uprnErr = $streetErr = $townErr = $postcodeErr = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+   # Initialize an error array.
+   $newPropErrors = array();
+
    if (empty($_POST["uprn"])) {
-      $uprnErr = "UPRN is required";
+      $newPropErrors[] = "UPRN is required";
    } 
    else {
       $uprn = clean_input($_POST['uprn']);
@@ -27,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $streetnumber = clean_input($_POST['streetnumber']);
    
    if (empty($_POST["addressline1"])) {
-      $streetErr = "Street is required";
+      $newPropErrors[] = "Street is required";
    } 
    else {      
       $addressline1 = clean_input($_POST['addressline1']);
@@ -36,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $addressline2 = clean_input($_POST['addressline2']);
    
    if (empty($_POST["town"])) {
-      $townErr = "Town is required";
+      $newPropErrors[] = "Town is required";
    } 
    else {      
       $town = clean_input($_POST['town']);
    }
    
-   if (empty($_POST["town"])) {
-      $postcodeErr = "Postcode is required";
+   if (empty($_POST["postcode"])) {
+      $newPropErrors[] = "Postcode is required";
    } 
    else {      
       $postcode = clean_input($_POST['postcode']);
@@ -57,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    #print_r($uprn, $streetnumber);
 
-   if (isset ($_POST['uprn']) && isset($_POST['addressline1']) && isset($_POST['town']) && isset($_POST['postcode']) ) {
+   if (empty($newPropErrors) ) {
 
       $sql = "INSERT INTO aaproperty(uprn, streetnumber,addressline1, addressline2, town, postcode, propertyname, addresslookup, owner) 
                VALUES('$uprn', '$streetnumber', '$addressline1', '$addressline2', '$town', '$postcode', '$propertyname', '$addresslookup', '$owner')";
@@ -72,6 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       # Close the connection.
       mysqli_close( $dbc ) ;
+   } else {
+      
+      # Or report errors.
+      echo '<h1>Error!</h1><p id="err_msg">The following error(s) occurred:<br>' ;
+      foreach ( $newPropErrors as $msg )
+      { echo " - $msg<br>" ; }
+      echo 'Please try again.</p>';
+      
+      
    }
 }
 
@@ -102,14 +113,14 @@ function clean_input($data) {
    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"   > 
    <p><span class="error">* required field</span></p>
       <table>
-         <tr><th>UPRN           : </th><td><input type="text" name="uprn">        <span class="error">* <?php echo $uprnErr;?></span></td></tr>
-         <tr><th>Street Number  : </th><td><input type="text" name="streetnumber"></td></tr>
-         <tr><th>Address Line 1 : </th><td><input type="text" name="addressline1"><span class="error">* <?php echo $streetErr;?></span></td></tr>
-         <tr><th>Address Line 2 : </th><td><input type="text" name="addressline2"></td></tr>
-         <tr><th>Town           : </th><td><input type="text" name="town">        <span class="error">* <?php echo $townErr;?></span></td></tr>
-         <tr><th>Postcode       : </th><td><input type="text" name="postcode">    <span class="error">* <?php echo $postcodeErr;?></span></td></tr>
-         <tr><th>Property Name  : </th><td><input type="text" name="propertyname"></td></tr>
-         <tr><th>Owner          : </th><td><input type="text" name="owner">       </td></tr>
+         <tr><th>UPRN           : </th><td><input type="text" name="uprn"         value="<?php if (isset($_POST['uprn']))         echo $_POST['uprn'];         ?>"></td></tr>
+         <tr><th>Street Number  : </th><td><input type="text" name="streetnumber" value="<?php if (isset($_POST['streetnumber'])) echo $_POST['streetnumber']; ?>"></td></tr>
+         <tr><th>Address Line 1 : </th><td><input type="text" name="addressline1" value="<?php if (isset($_POST['addressline1'])) echo $_POST['addressline1']; ?>"></td></tr>
+         <tr><th>Address Line 2 : </th><td><input type="text" name="addressline2" value="<?php if (isset($_POST['addressline2'])) echo $_POST['addressline2']; ?>"></td></tr>
+         <tr><th>Town           : </th><td><input type="text" name="town"         value="<?php if (isset($_POST['town']))         echo $_POST['town'];         ?>"></td></tr>
+         <tr><th>Postcode       : </th><td><input type="text" name="postcode"     value="<?php if (isset($_POST['postcode']))     echo $_POST['postcode'];     ?>"></td></tr>
+         <tr><th>Property Name  : </th><td><input type="text" name="propertyname" value="<?php if (isset($_POST['propertyname'])) echo $_POST['propertyname']; ?>"></td></tr>
+         <tr><th>Owner          : </th><td><input type="text" name="owner"        value="<?php if (isset($_POST['owner']))        echo $_POST['owner'];        ?>"></td></tr>
       </table>
       <input type="submit" value="Save" name="submit"> 
       <a href="getchoice.php">Home</a>
