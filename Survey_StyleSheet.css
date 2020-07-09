@@ -32,21 +32,23 @@ p {
 }
 
 pre {
-	font-size: 12pt;
-   padding-top: 0px;
-	padding-left: 0px;
-	padding-bottom: 0px;
+	font-size      : 12pt;
+   padding-top    : 0px;
+	padding-left   : 0px;
+	padding-bottom : 0px;
 }	
 
 div {
-	font-style: normal;
-   padding-top: 0px;
-	padding-left: 0px;
-	padding-bottom: 0px;
+	font-style     : normal;
+   padding-top    : 0px;
+	padding-left   : 0px;
+	padding-bottom : 0px;
 }
 
 textarea {
-   width : 220px;
+   width    : 220px;
+   padding  : 0px;
+   margin   : 0px;
 }
 
 fieldset { 

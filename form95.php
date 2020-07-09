@@ -161,7 +161,7 @@ function clean_input($data) {
             <tr>
                <th id="surveyRequired" >BS7913 Survey Required?</th>
                <td>
-                  <input type="checkbox" name="bs7913survey" value="<?php echo ($row['BS7913Survey']=='1' ? '1' : '0');?>" <?php echo ($row['BS7913Survey']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="bs7913survey" value="<?php echo ($row['BS7913Survey']=='1' ? '1' : '0');?>" <?php echo ($row['BS7913Survey']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="bs7913survey_tt"  >
@@ -177,7 +177,7 @@ function clean_input($data) {
             <tr>
                <th>Structural Survey Required</th>
                <td>
-                  <input type="checkbox" name="structuralsurvey" value="<?php echo ($row['StructuralSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['StructuralSurvey']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="structuralsurvey" value="<?php echo ($row['StructuralSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['StructuralSurvey']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="structuralsurvey_tt"  >
@@ -191,7 +191,7 @@ function clean_input($data) {
             <tr>
                <th>Ventilation Survey Required</th>
                <td>
-                  <input type="checkbox"  name="ventilationsurvey" value="<?php echo ($row['VentilationSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['VentilationSurvey']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="ventilationsurvey" value="<?php echo ($row['VentilationSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['VentilationSurvey']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="ventilationsurvey_tt"  >
@@ -205,13 +205,13 @@ function clean_input($data) {
             <tr>
                <th>Services Survey Required</th>
                <td>
-                  <input type="checkbox"  name="servicessurvey" value="<?php echo ($row['ServicesSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['ServicesSurvey']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="servicessurvey" value="<?php echo ($row['ServicesSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['ServicesSurvey']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Other Survey Required</th>
                <td>
-                  <input type="checkbox"  id="othersurveyChk" name="othersurvey" onchange="showTypeSurveyReqd()" value="<?php echo ($row['OtherSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['OtherSurvey']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="othersurveyChk" name="othersurvey" onchange="showTypeSurveyReqd()" value="<?php echo ($row['OtherSurvey']=='1' ? '1' : '0');?>" <?php echo ($row['OtherSurvey']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <th id="typesurveyreqdHdr">Type Required</th>
                <td>
@@ -221,7 +221,7 @@ function clean_input($data) {
             <tr>
                <th>Inherent Technical Risk(from table B2.)</th>
                <td>
-                  <select id="technicalrisk" name="technicalrisk" size="1" style="width: 200px;">
+                  <select id="technicalrisk" name="technicalrisk" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="1" <?php echo $row['TechnicalRisk'] == "1" ? " selected" : ""; ?>>1</option>
                      <option value="2" <?php echo $row['TechnicalRisk'] == "2" ? " selected" : ""; ?>>2</option>
@@ -232,7 +232,7 @@ function clean_input($data) {
             <tr>
                <th>PAS Pathway</th>
                <td>
-                  <select id="paspathway" name="paspathway" size="1" style="width: 200px;">
+                  <select id="paspathway" name="paspathway" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="A" <?php echo $row['PASPathway'] == "A" ? " selected" : ""; ?>>A</option>
                      <option value="B" <?php echo $row['PASPathway'] == "B" ? " selected" : ""; ?>>B</option>

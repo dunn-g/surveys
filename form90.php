@@ -234,11 +234,11 @@ function clean_input($data) {
             <tr>
                <th id="firealarm" >Fire Alarm</th>
                <td>
-                  <input type="checkbox" id="firealarmChk" name="firealarm" onchange="showFireAlarmPower()" value="<?php echo ($row['FireAlarm']=='1' ? '1' : '0');?>" <?php echo ($row['FireAlarm']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="firealarmChk" name="firealarm" onchange="showFireAlarmPower()" value="<?php echo ($row['FireAlarm']=='1' ? '1' : '0');?>" <?php echo ($row['FireAlarm']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <th id="firealarmpowerHdr"> Power</th>
                <td>
-                  <select id="firealarmpowerSel" name="firealarmpower" size="1" style="width: 200px;">
+                  <select id="firealarmpowerSel" name="firealarmpower" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Battery"    <?php echo $row['FireAlarmPower'] == "Battery"    ? " selected" : ""; ?>>Battery</option>
                      <option value="Hard wired" <?php echo $row['FireAlarmPower'] == "Hard wired" ? " selected" : ""; ?>>Hard wired</option>
@@ -248,29 +248,29 @@ function clean_input($data) {
             <tr>
                <th>Carbon Monoxide Alarm</th>
                <td>
-                  <input type="checkbox"  id="carbonmonoxidealarmChk" name="carbonmonoxidealarm" onchange="showCORoomsServed()" value="<?php echo ($row['CarbonMonoxideAlarm']=='1' ? '1' : '0');?>" <?php echo ($row['CarbonMonoxideAlarm']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="carbonmonoxidealarmChk" name="carbonmonoxidealarm" onchange="showCORoomsServed()" value="<?php echo ($row['CarbonMonoxideAlarm']=='1' ? '1' : '0');?>" <?php echo ($row['CarbonMonoxideAlarm']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <th id="roomsservedHdr">All rooms served by alarm</th>
                <td>
-                  <input type="checkbox" id="roomsservedSel" name="roomsservedbyco2alarm" value="<?php echo ($row['RoomsServedByCo2Alarm']=='1' ? '1' : '0');?>" <?php echo ($row['RoomsServedByCo2Alarm']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="roomsservedSel" name="roomsservedbyco2alarm" value="<?php echo ($row['RoomsServedByCo2Alarm']=='1' ? '1' : '0');?>" <?php echo ($row['RoomsServedByCo2Alarm']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Sprinklers</th>
                <td>
-                  <input type="checkbox"  name="sprinklers" value="<?php echo ($row['Sprinklers']=='1' ? '1' : '0');?>" <?php echo ($row['Sprinklers']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="sprinklers" value="<?php echo ($row['Sprinklers']=='1' ? '1' : '0');?>" <?php echo ($row['Sprinklers']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Internet Connection</th>
                <td>
-                  <input type="checkbox"  name="internetconnection" value="<?php echo ($row['InternetConnection']=='1' ? '1' : '0');?>" <?php echo ($row['InternetConnection']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="internetconnection" value="<?php echo ($row['InternetConnection']=='1' ? '1' : '0');?>" <?php echo ($row['InternetConnection']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Smart Meter Installed</th>
                <td>
-                  <select id="smartmeterinstalled" name="smartmeterinstalled" size="1" style="width: 200px;">
+                  <select id="smartmeterinstalled" name="smartmeterinstalled" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"           <?php echo $row['SmartMeterInstalled'] == "None" ? " selected" : ""; ?>          >None</option>
                      <option value="Type 1"         <?php echo $row['SmartMeterInstalled'] == "Type 1" ? " selected" : ""; ?>        >Type 1</option>
@@ -282,7 +282,7 @@ function clean_input($data) {
             <tr>
                <th>Data Logger</th>
                <td>
-                  <input type="checkbox"  name="datalogger" value="<?php echo ($row['DataLogger']=='1' ? '1' : '0');?>" <?php echo ($row['DataLogger']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="datalogger" value="<?php echo ($row['DataLogger']=='1' ? '1' : '0');?>" <?php echo ($row['DataLogger']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
@@ -306,7 +306,7 @@ function clean_input($data) {
             <tr>
                <th>Occupier</th>Occupier
                <td>
-                  <select id="occupier" name="occupier[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="occupier" name="occupier[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="Energy Aware"      <?php echo (isset($occupierAry) && in_array('Energy Aware', $occupierAry))      ? " selected" : ""; ?>>Energy Aware</option>
                      <option value="Health Aware"      <?php echo (isset($occupierAry) && in_array('Health Aware', $occupierAry))      ? " selected" : ""; ?>>Health Aware</option>

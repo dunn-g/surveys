@@ -170,7 +170,7 @@ function clean_input($data) {
             <tr>
                <th>Floor 2 Retrofit</th>
                <td>
-                  <select id="floor2retrofit" name="floor2retrofit" size="1" style="width: 200px;">
+                  <select id="floor2retrofit" name="floor2retrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['Floor2Retrofit'] == "Red"           ? " selected" : ""; ?>>Red</option>
                      <option value="Amber"         <?php echo $row['Floor2Retrofit'] == "Amber"         ? " selected" : ""; ?>>Amber</option>
@@ -182,7 +182,7 @@ function clean_input($data) {
             <tr>
                <th>Floor 2 Location</th>
                <td>
-                  <select id="floor2location" name="floor2location" size="1" style="width: 200px;">
+                  <select id="floor2location" name="floor2location" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Above Soil"          <?php echo $row['Floor2Location'] == "Above Soil"           ? " selected" : ""; ?>>Above Soil</option>
                      <option value="Above heated space"  <?php echo $row['Floor2Location'] == "Above heated space"   ? " selected" : ""; ?>>Above heated space</option>
@@ -194,7 +194,7 @@ function clean_input($data) {
             <tr>
                <th>Floor 2 Type</th>
                <td>
-                  <select id="floor2type" name="floor2type[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="floor2type" name="floor2type[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Solid floor original"    <?php echo (isset($f2typeAry) && in_array('Solid floor original', $f2typeAry))    ? " selected" : ""; ?>>Solid floor original</option>
                      <option value="Solid floor replacement" <?php echo (isset($f2typeAry) && in_array('Solid floor replacement', $f2typeAry)) ? " selected" : ""; ?>>Solid floor replacement</option>
@@ -213,7 +213,7 @@ function clean_input($data) {
             <tr>
                <th id="flr2inslatndepthHdr">Floor 2 Insulation Thickness</th>
                <td>
-                  <select id="flr2inslatndepthSel" name="floor2inslatndepth[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="flr2inslatndepthSel" name="floor2inslatndepth[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="As Built"<?php echo (isset($f2insdepthAry) && in_array('As Built', $f2insdepthAry)) ? " selected" : ""; ?>>As Built</option>
                      <option value="50mm"    <?php echo (isset($f2insdepthAry) && in_array('50mm', $f2insdepthAry))     ? " selected" : ""; ?>>50mm</option>
@@ -227,7 +227,7 @@ function clean_input($data) {
             <tr>
                <th id="flr2inslatntypeHdr">Floor 2 Inslatn Type</th>
                <td>
-                  <select id="flr2inslatntypeSel" name="floor2inslatntype[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="flr2inslatntypeSel" name="floor2inslatntype[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="EPS/XPS"                  <?php echo (isset($f2instypeAry) && in_array('EPS/XPS', $f2instypeAry))                  ? " selected" : ""; ?>>EPS/XPS</option>
                      <option value="Phenolic/PIR/PUR"         <?php echo (isset($f2instypeAry) && in_array('Phenolic/PIR/PUR', $f2instypeAry))         ? " selected" : ""; ?>>Phenolic/PIR/PUR</option>

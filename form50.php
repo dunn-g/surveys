@@ -197,7 +197,7 @@ function clean_input($data) {
             <tr>
                <th>Roof Retrofit</th>
                <td>
-                  <select id="roofretrofit" name="roofretrofit" size="1" style="width: 200px;">
+                  <select id="roofretrofit" name="roofretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['RoofRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['RoofRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
@@ -209,7 +209,7 @@ function clean_input($data) {
             <tr>
                <th>Main Roof Insulation</th>
                <td>
-                  <select id="mainroofinsulation" name="mainroofinsulation" size="1" style="width: 200px;">
+                  <select id="mainroofinsulation" name="mainroofinsulation" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"          <?php echo $row['MainRoofInsulation'] == "None" ? " selected" : ""; ?>          >None</option>
                      <option value="Joists"        <?php echo $row['MainRoofInsulation'] == "Joists" ? " selected" : ""; ?>        >Joists</option>
@@ -231,7 +231,7 @@ function clean_input($data) {
             <tr>
                <th>Main Roof Insulation Thickness</th>
                <td>
-                  <select id="mainroofinslatnthick" name="mainroofinslatnthick" size="1" style="width: 200px;">
+                  <select id="mainroofinslatnthick" name="mainroofinslatnthick" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Less than 100mm"<?php echo $row['MainRoofInslatnThick'] == "Less than 100mm" ? " selected" : ""; ?>  >Less than 100mm</option>
                      <option value="100-200mm"      <?php echo $row['MainRoofInslatnThick'] == "100-200mm" ? " selected" : ""; ?> >100-200mm</option>
@@ -243,7 +243,7 @@ function clean_input($data) {
             <tr>
                <th>Main Roof Insulation Type</th>
                <td>
-                  <select id="roofinsulationtype" name="mainroofinslatntype" size="1" style="width: 200px;">
+                  <select id="roofinsulationtype" name="mainroofinslatntype" size="1" >
                      <optgroup label="Joists" id="mainroofInsulTypeJoist" >
                         <option value="" disabled selected>Please choose...</option>
                         <option value="Mineral wool / Glass fibre / EPS/XPS"<?php echo $row['MainRoofInslatnType'] == "Mineral wool / Glass fibre / EPS/XPS" ? " selected" : ""; ?>>Mineral wool / Glass fibre / EPS/XPS</option>
@@ -265,7 +265,7 @@ function clean_input($data) {
             <tr>
                <th>Room In Loft/Loft Conversion</th>
                <td>
-                  <select id="loftconversion" name="loftconversion" size="1" style="width: 200px;">
+                  <select id="loftconversion" name="loftconversion" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="As built"  <?php echo $row['LoftConversion'] == "As built"  ? " selected" : ""; ?> >As built</option>
                      <option value="Pre 1965"  <?php echo $row['LoftConversion'] == "Pre 1965"  ? " selected" : ""; ?> >Pre 1965</option>
@@ -299,7 +299,7 @@ function clean_input($data) {
             <tr>
                <th id="dormerwindowsHdr">Dormer Windows</th>
                <td>
-                  <select id="dormerwindowsSel" name="dormerwindows" size="1" style="width: 200px;">
+                  <select id="dormerwindowsSel" name="dormerwindows" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Single"          <?php echo $row['DormerWindows'] == "Single"           ? " selected" : ""; ?>>Single</option>
                      <option value="Double Pre 2002" <?php echo $row['DormerWindows'] == "Double Pre 2002"  ? " selected" : ""; ?>>Double Pre 2002</option>
@@ -313,7 +313,7 @@ function clean_input($data) {
             <tr>
                <th id="dormroofinslatnHdr">Dormer Roof Insulation</th>
                <td>
-                  <select id="dormroofinslatnSel" name="dormroofinslatn" size="1" style="width: 200px;">
+                  <select id="dormroofinslatnSel" name="dormroofinslatn" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Sufficient"                                  <?php echo $row['DormRoofInslatn'] == "Sufficient" ? " selected" : "";                                  ?>>Sufficient</option>
                      <option value="Insufficient with potential for improvement" <?php echo $row['DormRoofInslatn'] == "Insufficient with potential for improvement" ? " selected" : ""; ?>>Insufficient with potential for improvement</option>
@@ -324,7 +324,7 @@ function clean_input($data) {
             <tr>
                <th id="dormwallinslatnHdr">Dormer wall/cheek Insulation</th>
                <td>
-                  <select id="dormwallinslatnSel" name="dormwallinslatn" size="1" style="width: 200px;">
+                  <select id="dormwallinslatnSel" name="dormwallinslatn" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Sufficient"                                  <?php echo $row['DormWallInslatn'] == "Sufficient" ? " selected" : "";                                  ?>>Sufficient</option>
                      <option value="Insufficient with potential for improvement" <?php echo $row['DormWallInslatn'] == "Insufficient with potential for improvement" ? " selected" : ""; ?>>Insufficient with potential for improvement</option>
@@ -341,7 +341,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Insulation</th>
                <td>
-                  <select id="roof2insulation" name="roof2insulation" size="1" style="width: 200px;">
+                  <select id="roof2insulation" name="roof2insulation" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Joists"   <?php echo $row['Roof2Insulation'] == "Joists" ? " selected" : ""; ?>  >Joists</option>
                      <option value="Rafters"  <?php echo $row['Roof2Insulation'] == "Rafters" ? " selected" : ""; ?> >Rafters</option>
@@ -354,7 +354,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Insulation Thickness</th>
                <td>
-                  <select id="mainroofinslatnthick" name="mainroofinslatnthick" size="1" style="width: 200px;">
+                  <select id="mainroofinslatnthick" name="mainroofinslatnthick" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Less than 100mm"<?php echo $row['Roof2InslatnThicknss'] == "Less than 100mm" ? " selected" : ""; ?>  >Less than 100mm</option>
                      <option value="100-200mm"      <?php echo $row['Roof2InslatnThicknss'] == "100-200mm" ? " selected" : ""; ?> >100-200mm</option>
@@ -366,7 +366,7 @@ function clean_input($data) {
             <tr>
                <th>Roof 2 Insulation Type</th>
                <td>
-                  <select id="roof2inslatntype" name="roof2inslatntype" size="1" style="width: 200px;">
+                  <select id="roof2inslatntype" name="roof2inslatntype" size="1" >
                      <optgroup label="Joists" id="mainroofInsulTypeJoist" >
                         <option value="" disabled selected>Please choose...</option>
                         <option value="Mineral wool / Glass fibre / EPS/XPS"<?php echo $row['Roof2InslatnType'] == "Mineral wool / Glass fibre / EPS/XPS" ? " selected" : ""; ?>    >Mineral wool / Glass fibre / EPS/XPS</option>
@@ -388,7 +388,7 @@ function clean_input($data) {
             <tr>
                <th>Room In Loft2/Loft 2 Conversion</th>
                <td>
-                  <select id="loft2conversion" name="loft2conversion" size="1" style="width: 200px;">
+                  <select id="loft2conversion" name="loft2conversion" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="As built"  <?php echo $row['Loft2Conversion'] == "As built"  ? " selected" : ""; ?> >As built</option>
                      <option value="Pre 1965"  <?php echo $row['Loft2Conversion'] == "Pre 1965"  ? " selected" : ""; ?> >Pre 1965</option>
@@ -407,7 +407,7 @@ function clean_input($data) {
             <tr>
                <th>Roof Notes</th>
                <td>
-                  <textarea name="roofnotes" rows="2" cols="30"><?php echo $row['RoofNotes']?></textarea>
+                  <textarea name="roofnotes" rows="2" cols="25"><?php echo $row['RoofNotes']?></textarea>
                </td>
             </tr>
          </table>

@@ -148,7 +148,7 @@ function clean_input($data) {
             <tr>
                <th>Mould Location</th>
                <td>
-                  <select id="mouldlocation" name="mouldlocation[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="mouldlocation" name="mouldlocation[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wall North"          <?php echo (isset($mouldlocAry) && in_array('Wall North', $mouldlocAry))          ? " selected" : ""; ?>>Wall North</option>
                      <option value="Wall South"          <?php echo (isset($mouldlocAry) && in_array('Wall South', $mouldlocAry))          ? " selected" : ""; ?>>Wall South</option>
@@ -184,7 +184,7 @@ function clean_input($data) {
             <tr>
                <th>Damp Location</th>
                <td>
-                  <select id="damplocation" name="damplocation[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="damplocation" name="damplocation[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wall North"          <?php echo (isset($damplocAry) && in_array('Wall North', $damplocAry))          ? " selected" : ""; ?>>Wall North</option>
                      <option value="Wall South"          <?php echo (isset($damplocAry) && in_array('Wall South', $damplocAry))          ? " selected" : ""; ?>>Wall South</option>
@@ -217,7 +217,7 @@ function clean_input($data) {
             <tr>
                <th>Rot Location</th>
                <td>
-                  <select id="rotlocation" name="rotlocation[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="rotlocation" name="rotlocation[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wall North"          <?php echo (isset($rotlocAry) && in_array('Wall North', $rotlocAry))          ? " selected" : ""; ?>>Wall North</option>
                      <option value="Wall South"          <?php echo (isset($rotlocAry) && in_array('Wall South', $rotlocAry))          ? " selected" : ""; ?>>Wall South</option>
@@ -251,7 +251,7 @@ function clean_input($data) {
             <tr>
                <th>Structure Location</th>
                <td>
-                  <select id="structurelocation" name="structurelocation[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="structurelocation" name="structurelocation[]" multiple="multiple" size="4" >
                      <option value="" disabled >Please choose...</option>
                      <option value="Wall North"          <?php echo (isset($structlocAry) && in_array('Wall North', $structlocAry))          ? " selected" : ""; ?>>Wall North</option>
                      <option value="Wall South"          <?php echo (isset($structlocAry) && in_array('Wall South', $structlocAry))          ? " selected" : ""; ?>>Wall South</option>

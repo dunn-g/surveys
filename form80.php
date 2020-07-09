@@ -123,7 +123,7 @@ function clean_input($data) {
             <tr>
                <th>Ventilation Strategy</th>
                <td>
-                  <select id="ventilationstrategy" name="ventilationstrategy" size="1" style="width: 200px;">
+                  <select id="ventilationstrategy" name="ventilationstrategy" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="None"                   <?php echo $row['VentilationStrategy'] == "None" ? " selected" : ""; ?>                  >None</option>
                      <option value="Passive Stack"          <?php echo $row['VentilationStrategy'] == "Passive Stack" ? " selected" : ""; ?>         >Passive Stack</option>
@@ -146,7 +146,7 @@ function clean_input($data) {
             <tr>
                <th>Ventilation Bathroom</th>
                <td>
-                  <select id="ventilationbathroom" name="ventilationbathroom" size="1" style="width: 200px;">
+                  <select id="ventilationbathroom" name="ventilationbathroom" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Mechanical extract light switch"        <?php echo $row['VentilationBathroom'] == "Mechanical extract light switch" ? " selected" : ""; ?>       >Mechanical extract light switch</option>
                      <option value="Mechanical extract humidity"            <?php echo $row['VentilationBathroom'] == "Mechanical extract humidity" ? " selected" : ""; ?>           >Mechanical extract humidity</option>
@@ -171,7 +171,7 @@ function clean_input($data) {
             <tr>
                <th>Ventilation Kitchen</th>
                <td>
-                  <select id="ventilationkitchen" name="ventilationkitchen[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="ventilationkitchen" name="ventilationkitchen[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="Mechanical extract switch"              <?php echo (isset($ventkitchenAry) && in_array('Mechanical extract switch', $ventkitchenAry))   ? " selected" : ""; ?>>Mechanical extract switch</option>
                      <option value="Mechanical extract humidity"            <?php echo (isset($ventkitchenAry) && in_array('Mechanical extract humidity', $ventkitchenAry)) ? " selected" : ""; ?>>Mechanical extract humidity</option>
@@ -187,7 +187,7 @@ function clean_input($data) {
             <tr>
                <th>Cooker Hood</th>
                <td>
-                  <select id="cookerhood" name="cookerhood" size="1" style="width: 200px;">
+                  <select id="cookerhood" name="cookerhood" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Externally vented" <?php echo $row['CookerHood'] == "Externally vented"  ? " selected" : ""; ?>>Externally vented</option>
                      <option value="Recirculation"     <?php echo $row['CookerHood'] == "Recirculation"      ? " selected" : ""; ?>>Recirculation</option>
@@ -197,7 +197,7 @@ function clean_input($data) {
             <tr>
                <th>Window Ventilation</th>
                <td>
-                  <select id="windowventilation" name="windowventilation" size="1" style="width: 200px;">
+                  <select id="windowventilation" name="windowventilation" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="All"  <?php echo $row['WindowVentilation'] == "All"  ? " selected" : ""; ?>>All</option>
                      <option value="Some" <?php echo $row['WindowVentilation'] == "Some" ? " selected" : ""; ?>>Some</option>
@@ -208,7 +208,7 @@ function clean_input($data) {
             <tr>
                <th>Chimney Ventilation</th>
                <td>
-                  <select id="chimneyventilation" name="chimneyventilation" size="1" style="width: 200px;">
+                  <select id="chimneyventilation" name="chimneyventilation" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="All"  <?php echo $row['ChimneyVentilation'] == "All" ? " selected" : ""; ?> >All</option>
                      <option value="Some" <?php echo $row['ChimneyVentilation'] == "Some" ? " selected" : ""; ?>>Some</option>
@@ -219,7 +219,7 @@ function clean_input($data) {
             <tr>
                <th>Further Investigation</th>
                <td>
-                  <input type="checkbox"  name="investigation" value="<?php echo ($row['FurtherInvestigation']=='1' ? '1' : '0');?>" <?php echo ($row['FurtherInvestigation']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="investigation" value="<?php echo ($row['FurtherInvestigation']=='1' ? '1' : '0');?>" <?php echo ($row['FurtherInvestigation']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>

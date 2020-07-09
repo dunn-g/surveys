@@ -132,7 +132,7 @@ function clean_input($data) {
             <tr>
                <th>Main Space Heating Fuel</th>
                <td>
-                  <select id="mainspaceheatingfuel" name="mainspaceheatingfuel" size="1" style="width: 200px;">
+                  <select id="mainspaceheatingfuel" name="mainspaceheatingfuel" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Electric"   <?php echo $row['MainSpaceHeatingFuel'] == "Electric"   ? " selected" : ""; ?>>Electric</option>
                      <option value="Mains Gas"  <?php echo $row['MainSpaceHeatingFuel'] == "Mains Gas"  ? " selected" : ""; ?>>Mains Gas</option>
@@ -155,7 +155,7 @@ function clean_input($data) {
             <tr>
                <th>Main Heating Type</th>
                <td>
-                  <select id="mainheatingtype" name="mainheatingtype" size="1" style="width: 200px;">
+                  <select id="mainheatingtype" name="mainheatingtype" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Combi Boiler"            <?php echo $row['MainHeatingType'] == "Combi Boiler"            ? " selected" : ""; ?>>Combi Boiler</option>
                      <option value="System Boiler"           <?php echo $row['MainHeatingType'] == "System Boiler"           ? " selected" : ""; ?>>System Boiler</option>
@@ -186,7 +186,7 @@ function clean_input($data) {
             <tr>
                <th>Hybridisation - Space Available?</th>
                <td>
-                  <input type="checkbox"  name="hybridisation" value="<?php echo ($row['Hybridisation']=='1' ? '1' : '0');?>" <?php echo ($row['Hybridisation']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="hybridisation" value="<?php echo ($row['Hybridisation']=='1' ? '1' : '0');?>" <?php echo ($row['Hybridisation']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="hybridisation_tt"  >
@@ -200,7 +200,7 @@ function clean_input($data) {
             <tr>
                <th>Heat Delivery Type</th>
                <td>
-                  <select id="heatdelivery" name="heatdelivery[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="heatdelivery" name="heatdelivery[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="Radiators"  <?php echo (isset($heatdelAry) && in_array('Radiators', $heatdelAry)) ? " selected" : ""; ?>>Radiators</option>
                      <option value="Underfloor" <?php echo (isset($heatdelAry) && in_array('Underfloor', $heatdelAry))  ? " selected" : ""; ?>>Underfloor</option>
@@ -211,7 +211,7 @@ function clean_input($data) {
             <tr>
                <th>Heat Controls</th>
                <td>
-                  <select id="heatcontrols" name="heatcontrols[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="heatcontrols" name="heatcontrols[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="TRV"                  <?php echo (isset($heatctrlAry) && in_array('TRV', $heatctrlAry))                  ? " selected" : ""; ?>>TRV</option>
                      <option value="Timer"                <?php echo (isset($heatctrlAry) && in_array('Timer', $heatctrlAry))                ? " selected" : ""; ?>>Timer</option>
@@ -239,7 +239,7 @@ function clean_input($data) {
             <tr>
                <th>Secondary Space Heating Fuel</th>
                <td>
-                  <select id="secondaryspaceheatingfuel" name="secondaryspaceheatingfuel" size="1" style="width: 200px;">
+                  <select id="secondaryspaceheatingfuel" name="secondaryspaceheatingfuel" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Electric"   <?php echo $row['SecondarySpaceHeatingFuel'] == "Electric" ? " selected" : ""; ?>  >Electric</option>
                      <option value="Mains Gas"  <?php echo $row['SecondarySpaceHeatingFuel'] == "Mains Gas" ? " selected" : ""; ?> >Mains Gas</option>
@@ -252,7 +252,7 @@ function clean_input($data) {
             <tr>
                <th>Secondary Heating Type</th>
                <td>
-                  <select id="secondaryheatingtype" name="secondaryheatingtype" size="1" style="width: 200px;">
+                  <select id="secondaryheatingtype" name="secondaryheatingtype" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Boiler"       <?php echo $row['SecondaryHeatingType'] == "Boiler"       ? " selected" : ""; ?>>Boiler</option>
                      <option value="Aga / Stove"  <?php echo $row['SecondaryHeatingType'] == "Aga / Stove"  ? " selected" : ""; ?>>Aga / Stove</option>

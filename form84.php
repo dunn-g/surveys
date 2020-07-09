@@ -169,7 +169,7 @@ function clean_input($data) {
             <tr>
                <th>Lighting</th>
                <td>
-                  <select id="lighting" name="lighting" size="1" style="width: 200px;">
+                  <select id="lighting" name="lighting" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="All / mostly LED"          <?php echo $row['Lighting'] == "All / mostly LED" ? " selected" : ""; ?>         >All / mostly LED</option>
                      <option value="All / mostly Incandescent" <?php echo $row['Lighting'] == "All / mostly Incandescent" ? " selected" : ""; ?>>All / mostly Incandescent</option>
@@ -189,7 +189,7 @@ function clean_input($data) {
             <tr>
                <th>Downlighters/Recessed Lighting</th>
                <td>
-                  <input type="checkbox" id="recessedlightsChk"  name="recessedlighting" onchange="showBuildingRegsComp()" value="<?php echo ($row['RecessedLighting']=='1' ? '1' : '0');?>" <?php echo ($row['RecessedLighting']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="recessedlightsChk"  name="recessedlighting" onchange="showBuildingRegsComp()" value="<?php echo ($row['RecessedLighting']=='1' ? '1' : '0');?>" <?php echo ($row['RecessedLighting']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="recessedlighting_tt"  >
@@ -203,7 +203,7 @@ function clean_input($data) {
                </td>
                <th id="buildingregscompHdr">Building Regs Compliant</th>
                <td>
-                  <input type="checkbox" id="buildingregscompChk" name="buildingregsok" value="<?php echo ($row['BuildingRegsOK']=='1' ? '1' : '0');?>" <?php echo ($row['BuildingRegsOK']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" id="buildingregscompChk" name="buildingregsok" value="<?php echo ($row['BuildingRegsOK']=='1' ? '1' : '0');?>" <?php echo ($row['BuildingRegsOK']=='1' ? 'checked="checked"' : '');?>>
                </td>
                <td>
                <div class="tooltip" id="buildingregsok_tt"  >
@@ -227,7 +227,7 @@ function clean_input($data) {
             <tr>
                <th>Renewable Energy</th>
                <td>
-                  <select id="renewableenergy" name="renewableenergy[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="renewableenergy" name="renewableenergy[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="Solar Thermal" <?php echo (isset($renewnrgAry) && in_array('Solar Thermal', $renewnrgAry)) ? " selected" : ""; ?>>Solar Thermal</option>
                      <option value="Solar PV"      <?php echo (isset($renewnrgAry) && in_array('Solar PV', $renewnrgAry))      ? " selected" : ""; ?>>Solar PV</option>
@@ -250,7 +250,7 @@ function clean_input($data) {
             <tr>
                <th>White Goods</th>
                <td>
-                  <select id="whitegoods" name="whitegoods" size="1" style="width: 200px;">
+                  <select id="whitegoods" name="whitegoods" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Mostly above A" <?php echo $row['WhiteGoods'] == "Mostly above A" ? " selected" : ""; ?>>Mostly above A</option>
                      <option value="Mostly below A" <?php echo $row['WhiteGoods'] == "Mostly below A" ? " selected" : ""; ?>>Mostly below A</option>
@@ -271,7 +271,7 @@ function clean_input($data) {
             <tr>
                <th>Washing/Drying</th>
                <td>
-                  <select id="washingdrying" name="washingdrying[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="washingdrying" name="washingdrying[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="No drier"                <?php echo (isset($washAry) && in_array('No drier', $washAry))                ? " selected" : ""; ?>>No drier</option>
                      <option value="External clothes line"   <?php echo (isset($washAry) && in_array('External clothes line', $washAry))   ? " selected" : ""; ?>>External clothes line</option>
@@ -293,7 +293,7 @@ function clean_input($data) {
             <tr>
                <th>Systems Working Correctly</th>
                <td>
-                  <input type="checkbox"  name="systemsworking" value="<?php echo ($row['SystemsWorking']=='1' ? '1' : '0');?>" <?php echo ($row['SystemsWorking']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="systemsworking" value="<?php echo ($row['SystemsWorking']=='1' ? '1' : '0');?>" <?php echo ($row['SystemsWorking']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>

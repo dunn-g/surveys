@@ -143,91 +143,91 @@ function clean_input($data) {
             <tr>
                <th>Protimeter masonry pin</th>
                <td>
-                  <input type="checkbox" name="protimeterpin" value="<?php echo ($row['ProtimeterPin']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterPin']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="protimeterpin" value="<?php echo ($row['ProtimeterPin']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterPin']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Protimeter masonry non-invasive</th>
                <td>
-                  <input type="checkbox" name="protimeternoninv" value="<?php echo ($row['ProtimeterNonInv']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterNonInv']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="protimeternoninv" value="<?php echo ($row['ProtimeterNonInv']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterNonInv']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Protimeter wood</th>
                <td>
-                  <input type="checkbox"  name="protimeterwood" value="<?php echo ($row['ProtimeterWood']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterWood']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="protimeterwood" value="<?php echo ($row['ProtimeterWood']=='1' ? '1' : '0');?>" <?php echo ($row['ProtimeterWood']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Thermal imaging camera</th>
                <td>
-                  <input type="checkbox"  name="thermalcamera" value="<?php echo ($row['ThermalCamera']=='1' ? '1' : '0');?>" <?php echo ($row['ThermalCamera']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="thermalcamera" value="<?php echo ($row['ThermalCamera']=='1' ? '1' : '0');?>" <?php echo ($row['ThermalCamera']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Relative humidity meter</th>
                <td>
-                  <input type="checkbox"  name="relhumidmeter" value="<?php echo ($row['RelHumidMeter']=='1' ? '1' : '0');?>" <?php echo ($row['RelHumidMeter']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="relhumidmeter" value="<?php echo ($row['RelHumidMeter']=='1' ? '1' : '0');?>" <?php echo ($row['RelHumidMeter']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Binoculars</th>
                <td>
-                  <input type="checkbox" name="binoculars" value="<?php echo ($row['Binoculars']=='1' ? '1' : '0');?>" <?php echo ($row['Binoculars']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="binoculars" value="<?php echo ($row['Binoculars']=='1' ? '1' : '0');?>" <?php echo ($row['Binoculars']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Ladder</th>
                <td>
-                  <input type="checkbox" name="ladder" value="<?php echo ($row['Ladder']=='1' ? '1' : '0');?>" <?php echo ($row['Ladder']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="ladder" value="<?php echo ($row['Ladder']=='1' ? '1' : '0');?>" <?php echo ($row['Ladder']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Torch</th>
                <td>
-                  <input type="checkbox"  name="torch" value="<?php echo ($row['Torch']=='1' ? '1' : '0');?>" <?php echo ($row['Torch']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="torch" value="<?php echo ($row['Torch']=='1' ? '1' : '0');?>" <?php echo ($row['Torch']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Crack width gauge</th>
                <td>
-                  <input type="checkbox"  name="crackgauge" value="<?php echo ($row['CrackGauge']=='1' ? '1' : '0');?>" <?php echo ($row['CrackGauge']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="crackgauge" value="<?php echo ($row['CrackGauge']=='1' ? '1' : '0');?>" <?php echo ($row['CrackGauge']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Light meter</th>
                <td>
-                  <input type="checkbox" name="lightmeter" value="<?php echo ($row['LightMeter']=='1' ? '1' : '0');?>" <?php echo ($row['LightMeter']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="lightmeter" value="<?php echo ($row['LightMeter']=='1' ? '1' : '0');?>" <?php echo ($row['LightMeter']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Sound level meter</th>
                <td>
-                  <input type="checkbox" name="soundmeter" value="<?php echo ($row['SoundMeter']=='1' ? '1' : '0');?>" <?php echo ($row['SoundMeter']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="soundmeter" value="<?php echo ($row['SoundMeter']=='1' ? '1' : '0');?>" <?php echo ($row['SoundMeter']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Laser/tape measure</th>
                <td>
-                  <input type="checkbox" name="laserortape" value="<?php echo ($row['LaserOrTape']=='1' ? '1' : '0');?>" <?php echo ($row['LaserOrTape']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="laserortape" value="<?php echo ($row['LaserOrTape']=='1' ? '1' : '0');?>" <?php echo ($row['LaserOrTape']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Level</th>
                <td>
-                  <input type="checkbox"  name="level" value="<?php echo ($row['Level']=='1' ? '1' : '0');?>" <?php echo ($row['Level']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="level" value="<?php echo ($row['Level']=='1' ? '1' : '0');?>" <?php echo ($row['Level']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>               
             <tr>
                <th>Plumb line</th>
                <td>
-                  <input type="checkbox"  name="plumbline" value="<?php echo ($row['PlumbLine']=='1' ? '1' : '0');?>" <?php echo ($row['PlumbLine']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="plumbline" value="<?php echo ($row['PlumbLine']=='1' ? '1' : '0');?>" <?php echo ($row['PlumbLine']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Air pressure test equipment</th>
                <td>
-                  <input type="checkbox"  name="airpresstest" value="<?php echo ($row['AirPressTest']=='1' ? '1' : '0');?>" <?php echo ($row['AirPressTest']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="airpresstest" value="<?php echo ($row['AirPressTest']=='1' ? '1' : '0');?>" <?php echo ($row['AirPressTest']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>

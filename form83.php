@@ -115,7 +115,7 @@ function clean_input($data) {
             <tr>
                <th>DHW Fuel</th>
                <td>
-                  <select id="dhwfuel" name="dhwfuel[]" multiple="multiple" size="4" style="width: 200px;">
+                  <select id="dhwfuel" name="dhwfuel[]" multiple="multiple" size="4">
                      <option value="" disabled >Please choose...</option>
                      <option value="Electric"   <?php echo (isset($dhwfuelAry) && in_array('Electric', $dhwfuelAry))   ? " selected" : ""; ?>>Electric</option>
                      <option value="Mains Gas"  <?php echo (isset($dhwfuelAry) && in_array('Mains Gas', $dhwfuelAry))  ? " selected" : ""; ?>>Mains Gas</option>
@@ -128,7 +128,7 @@ function clean_input($data) {
             <tr>
                <th>DHW Cylinder</th>
                <td>
-                  <select id="dhwcylinder" name="dhwcylinder[]" multiple="multiple" size="4" style="width: 250;"> <!-- reset to 160-->
+                  <select id="dhwcylinder" name="dhwcylinder[]" multiple="multiple" size="4"> <!-- reset to 160-->
                      <option value="" disabled >Please choose...</option>
                      <option value="No cylinder"                                           <?php echo (isset($dhwcylAry) && in_array('No cylinder', $dhwcylAry))                                           ? " selected" : ""; ?>>No cylinder</option>
                      <option value="Insulated (&gt;80mm loose or &gt;50mm factory fitted)" <?php echo (isset($dhwcylAry) && in_array('Insulated (&gt;80mm loose or &gt;50mm factory fitted)', $dhwcylAry)) ? " selected" : ""; ?>>Insulated(&gt;80mm loose or &gt;50mm factory fitted)</option>
@@ -145,7 +145,7 @@ function clean_input($data) {
             <tr>
                <th>DHW Pipework</th>
                <td>
-                  <select id="dhwpipework" name="dhwpipework" size="1" style="width: 200px;">
+                  <select id="dhwpipework" name="dhwpipework" size="1">
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Insulated pipework"           <?php echo $row['DHWPipework'] == "Insulated pipework" ? " selected" : ""; ?>          >Insulated pipework</option>
                      <option value="Uninsulated pipework"         <?php echo $row['DHWPipework'] == "Uninsulated pipework" ? " selected" : ""; ?>        >Uninsulated pipework</option>

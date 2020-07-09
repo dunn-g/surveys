@@ -114,31 +114,31 @@ function clean_input($data) {
             <tr>
                <th>WaterMeter</th>
                <td>
-                  <input type="checkbox"  name="watermeter" value="<?php echo ($row['WaterMeter']=='1' ? '1' : '0');?>" <?php echo ($row['WaterMeter']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="watermeter" value="<?php echo ($row['WaterMeter']=='1' ? '1' : '0');?>" <?php echo ($row['WaterMeter']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Waterbutt</th>
                <td>
-                  <input type="checkbox"  name="waterbutt" value="<?php echo ($row['Waterbutt']=='1' ? '1' : '0');?>" <?php echo ($row['Waterbutt']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="waterbutt" value="<?php echo ($row['Waterbutt']=='1' ? '1' : '0');?>" <?php echo ($row['Waterbutt']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>Bath</th>
                <td>
-                  <input type="checkbox"  name="bath" value="<?php echo ($row['Bath']=='1' ? '1' : '0');?>" <?php echo ($row['Bath']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="bath" value="<?php echo ($row['Bath']=='1' ? '1' : '0');?>" <?php echo ($row['Bath']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>
                <th>ToiletsDualFlush</th>
                <td>
-                  <input type="checkbox"  name="toiletsdualflush" value="<?php echo ($row['ToiletsDualFlush']=='1' ? '1' : '0');?>" <?php echo ($row['ToiletsDualFlush']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="toiletsdualflush" value="<?php echo ($row['ToiletsDualFlush']=='1' ? '1' : '0');?>" <?php echo ($row['ToiletsDualFlush']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr> 
             <tr>
                <th>Shower</th>
                <td>
-                  <input type="checkbox"  name="shower" value="<?php echo ($row['Shower']=='1' ? '1' : '0');?>" <?php echo ($row['Shower']=='1' ? 'checked="checked"' : '');?>>
+                  <input type="checkbox" class="chk" name="shower" value="<?php echo ($row['Shower']=='1' ? '1' : '0');?>" <?php echo ($row['Shower']=='1' ? 'checked="checked"' : '');?>>
                </td>
             </tr>
             <tr>

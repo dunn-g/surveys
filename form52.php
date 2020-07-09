@@ -125,7 +125,7 @@ function clean_input($data) {
             <tr>
                <th>Ceilings Retrofit</th>
                <td>
-                  <select id="ceilingsretrofit" name="ceilingsretrofit" size="1" style="width: 200px;">
+                  <select id="ceilingsretrofit" name="ceilingsretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['CeilingsRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['CeilingsRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
@@ -157,7 +157,7 @@ function clean_input($data) {
             <tr>
                <th>Internal Wall Retrofit</th>
                <td>
-                  <select id="internalwallretrofit" name="internalwallretrofit" size="1" style="width: 200px;">
+                  <select id="internalwallretrofit" name="internalwallretrofit" size="1" >
                      <option value="" disabled selected>Please choose...</option>
                      <option value="Red"           <?php echo $row['InternalWallRetrofit'] == "Red" ? " selected" : ""; ?>          >Red</option>
                      <option value="Amber"         <?php echo $row['InternalWallRetrofit'] == "Amber" ? " selected" : ""; ?>        >Amber</option>
